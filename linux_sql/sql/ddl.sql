@@ -1,5 +1,3 @@
-sql
-
 --Switch to host agent
 \c host_agent;
 
