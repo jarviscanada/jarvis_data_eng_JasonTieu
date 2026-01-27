@@ -27,7 +27,7 @@ timestamp=$(date "+%Y-%m-%d %H:%M:%S")
 host_id="(SELECT id FROM host_info WHERE hostname='$hostname')";
 
 #Setting up insert statement to database
-insert_stmt= "INSERT INTO host_usage(timestamp, host_id, memory_free, cpu_idle, cpu_kernel, disk_io, disk_available)
+insert_stmt="INSERT INTO host_usage(timestamp, host_id, memory_free, cpu_idle, cpu_kernel, disk_io, disk_available)
 VALUES('$timestamp', $host_id , '$memory_free', '$cpu_idle', '$cpu_kernel', '$disk_io', '$disk_available')"
 
 export PGPASSWORD=$psql_password
