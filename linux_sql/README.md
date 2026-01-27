@@ -43,7 +43,8 @@ database is included in the `assets/` directory
 #### psql_docker.sh
 Manages PostgreSQL Docker container (Create, start, stop)
 ```bash
-./psql_docker.sh create|start|stop
+./psql_docker.sh create <db_username> <db_password>
+./psql_docker.sh start|stop
 ```
 
 #### host_info.sh
