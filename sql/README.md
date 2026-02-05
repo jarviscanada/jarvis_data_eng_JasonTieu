@@ -1,5 +1,16 @@
 # Introduction
 
+This project is designed to demonstrate basic system administration and database management skills using 
+command-line tools and containerized environments. The main goal is to set up, manage, and interact with a 
+PostgreSQL database running inside a Docker container, while using Bash commands to perform system 
+operations. The primary users of this project are students or beginner developers learning Linux, 
+databases, and containerization. The project involves tasks such as creating databases and schemas, 
+running SQL queries, and managing files through the terminal. In addition to command-line tools, a SQL IDE 
+(DBeaver) was used to connect to the database and execute queries in a graphical interface. The main 
+technologies used include Bash for command-line interaction, Docker for container management, PostgreSQL 
+as the database system, Git for version control, and DBeaver as the SQL client. These tools together 
+provide a practical environment for learning essential development and DevOps skills.
+
 # SQL Queries
 
 ##### Table Setup (DDL)
