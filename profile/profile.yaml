@@ -1,0 +1,112 @@
+# Preferred name (Characters only)
+name: "Jason Tieu"
+
+# Your GitHub repo root URL
+github_repo_root_url: https://github.com/jarviscanada/jarvis_data_eng_JasonTieu
+
+# Introduce yourself
+summary: Computer Programming graduate from Humber College with a strong foundation in full-stack development, databases, and software engineering principles. Experienced in building web, mobile, and database-driven applications using Java, Python, JavaScript, React, Node.js, and SQL. Passionate about problem solving, automation, and scalable system design. Comfortable working in Agile environments and collaborating with cross-functional teams. Continuously learning new technologies and seeking opportunities to contribute to impactful software and data engineering projects.
+
+# Group your skills by level.
+skills:
+  proficient:
+    - Java
+    - Linux/Bash
+    - RDBMS/SQL
+    - Agile/Scrum
+    - Git
+  competent:
+    - JavaScript
+    - Docker
+    - Python
+    - Spring Boot
+    - MongoDB
+  familiar:
+    - React
+    - Django
+    - Redux
+    - REST APIs
+    - UML
+
+# List of Jarvis projects
+jarvis_projects:
+  - name: "Cluster Monitor"
+    git_url: "/linux_sql"
+    description: Developed a Linux-based cluster monitoring tool using Bash scripting and SQL to collect, store, and analyze system resource data, enabling performance tracking and automated reporting.
+  - name: "Core Java Apps"
+    git_url: "/core_java"
+    description:
+      - "Twitter App: Implemented a Java application that interacts with the Twitter API to post, retrieve, and delete tweets using HTTP requests and JSON parsing."
+      - "JDBC App: Built a Java application using JDBC to connect to a relational database and perform CRUD operations."
+      - "Grep App: Developed a Java-based grep application to search and process files using regular expressions and multithreading."
+  - name: "Springboot App"
+    git_url: "/springboot"
+    description: Built a RESTful Spring Boot application with layered architecture, integrating database persistence, validation, and service logic.
+  - name: "Python Data Analytics"
+    git_url: "/python_data_anlytics"
+    description: Performed data analysis using Python libraries to clean, transform, and visualize datasets, generating insights from structured data.
+  - name: "Hadoop"
+    git_url: "/hadoop"
+    description: Processed large datasets using Hadoop ecosystem tools, implementing distributed storage and parallel data processing.
+  - name: "Spark"
+    git_url: "/spark"
+    description: Built data processing pipelines using Apache Spark to perform distributed computations and analytics on large datasets.
+  - name: "Cloud/DevOps"
+    git_url: "/cloud_devops"
+    description: Deployed containerized applications using Docker and cloud services, implementing version control and CI/CD practices.
+
+# List of personal or academic projects
+highlighted_projects:
+  - name: "Personal Blogging Web Application"
+    git_url: "https://github.com/PseudocodeJason/Personal_Blogging_App_SourceCode"
+    description: Built a full-stack blogging platform using Node.js, MongoDB, and React, allowing users to register, create posts, and manage content with password encryption using BCryptJS.
+  - name: "Chat Box Web Application"
+    git_url: "https://github.com/PseudocodeJason/ChatBox_SourceCode"
+    description: Developed a Django-based chat application using Python, Bootstrap, and socket libraries with SSL support for secure messaging.
+  - name: "Game Deals Mobile Application"
+    git_url: "https://github.com/PseudocodeJason/Deal_Shark_App_SourceCode"
+    description: Created a cross-platform mobile app using React Native and Redux that allows users to search for discounted video games using external APIs.
+  - name: "Clothing Warehouse Web Application"
+    git_url: "https://github.com/PseudocodeJason/Clothing_Warehouse"
+    description: Implemented a Spring MVC web application that enables administrators to manage clothing inventory through REST APIs using Spring Boot, JPA, Thymeleaf, and validation features.
+
+# Professional experience
+professional_experience:
+  - title: "Data Engineer"
+    company: "Jarvis"
+    duration: "2026 - Present"
+    description: Developing data engineering and software projects using Java, Linux, SQL, and cloud technologies. Building scalable applications, writing automation scripts, and working within Agile teams to design, implement, and deploy production-ready solutions.
+  - title: "Letter Carrier"
+    company: "Canada Post"
+    duration: "Nov 2023 - Present"
+    description: Sort and deliver mail and parcels while operating mobile scanning devices to track deliveries in real time. Maintain accuracy, follow safety protocols, and ensure secure handling of customer items while meeting daily delivery targets.
+  - title: "IT Coordinator"
+    company: "Mississauga Vietnamese Community Centre"
+    duration: "May 2023 - Present"
+    description: Installed, configured, and troubleshot computer systems while implementing maintenance and patching protocols that reduced downtime and improved performance. Digitized media, enforced government security procedures, and maintained the community website.
+  - title: "Teaching Assistant (Co-Op)"
+    company: "Peel District School Board"
+    duration: "Feb 2019 - Jun 2019"
+    description: Assisted teachers with classroom activities, supported students with technical tasks, and helped manage learning materials and educational software in a structured school environment.
+
+# Education
+education:
+  - school_name: "Humber College"
+    duration: "2021-2023"
+    degree: "Computer Programming Diploma"
+    department: "Applied Sciences & Technology"
+    awards_achievements:
+      - "Dean's List"
+  - school_name: "Humber College"
+    duration: "2019-2021"
+    degree: "Building Construction Technology Diploma"
+    department: "Applied Sciences & Technology"
+    awards_achievements:
+      - "Dean's List"
+
+# Optional section
+others:
+  - title: "Activities/Hobbies"
+    bullets:
+      - "Learning new technologies"
+      - "Community volunteering"
