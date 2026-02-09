@@ -1,0 +1,146 @@
+{
+  "education": [
+    {
+      "awards_achievements": [
+        "Dean's List"
+      ],
+      "degree": "Computer Programming Diploma",
+      "department": "Applied Sciences \u0026 Technology",
+      "duration": "2021-2023",
+      "school_name": "Humber College"
+    },
+    {
+      "awards_achievements": [
+        "Dean's List"
+      ],
+      "degree": "Building Construction Technology Diploma",
+      "department": "Applied Sciences \u0026 Technology",
+      "duration": "2019-2021",
+      "school_name": "Humber College"
+    }
+  ],
+  "github_repo_root_url": "https://github.com/jarviscanada/jarvis_data_eng_JasonTieu",
+  "highlighted_projects": [
+    {
+      "description": "Built a full-stack blogging platform using Node.js, MongoDB, and React, allowing users to register, create posts, and manage content with password encryption using BCryptJS.",
+      "git_url": "https://github.com/PseudocodeJason/Personal_Blogging_App_SourceCode",
+      "name": "Personal Blogging Web Application"
+    },
+    {
+      "description": "Developed a Django-based chat application using Python, Bootstrap, and socket libraries with SSL support for secure messaging.",
+      "git_url": "https://github.com/PseudocodeJason/ChatBox_SourceCode",
+      "name": "Chat Box Web Application"
+    },
+    {
+      "description": "Created a cross-platform mobile app using React Native and Redux that allows users to search for discounted video games using external APIs.",
+      "git_url": "https://github.com/PseudocodeJason/Deal_Shark_App_SourceCode",
+      "name": "Game Deals Mobile Application"
+    },
+    {
+      "description": "Implemented a Spring MVC web application that enables administrators to manage clothing inventory through REST APIs using Spring Boot, JPA, Thymeleaf, and validation features.",
+      "git_url": "https://github.com/PseudocodeJason/Clothing_Warehouse",
+      "name": "Clothing Warehouse Web Application"
+    }
+  ],
+  "jarvis_projects": [
+    {
+      "description": "Developed a Linux-based cluster monitoring tool using Bash scripting and SQL to collect, store, and analyze system resource data, enabling performance tracking and automated reporting.",
+      "git_url": "/linux_sql",
+      "name": "Cluster Monitor"
+    },
+    {
+      "description": [
+        "Twitter App: Implemented a Java application that interacts with the Twitter API to post, retrieve, and delete tweets using HTTP requests and JSON parsing.",
+        "JDBC App: Built a Java application using JDBC to connect to a relational database and perform CRUD operations.",
+        "Grep App: Developed a Java-based grep application to search and process files using regular expressions and multithreading."
+      ],
+      "git_url": "/core_java",
+      "name": "Core Java Apps"
+    },
+    {
+      "description": "Built a RESTful Spring Boot application with layered architecture, integrating database persistence, validation, and service logic.",
+      "git_url": "/springboot",
+      "name": "Springboot App"
+    },
+    {
+      "description": "Performed data analysis using Python libraries to clean, transform, and visualize datasets, generating insights from structured data.",
+      "git_url": "/python_data_anlytics",
+      "name": "Python Data Analytics"
+    },
+    {
+      "description": "Processed large datasets using Hadoop ecosystem tools, implementing distributed storage and parallel data processing.",
+      "git_url": "/hadoop",
+      "name": "Hadoop"
+    },
+    {
+      "description": "Built data processing pipelines using Apache Spark to perform distributed computations and analytics on large datasets.",
+      "git_url": "/spark",
+      "name": "Spark"
+    },
+    {
+      "description": "Deployed containerized applications using Docker and cloud services, implementing version control and CI/CD practices.",
+      "git_url": "/cloud_devops",
+      "name": "Cloud/DevOps"
+    }
+  ],
+  "name": "Jason Tieu",
+  "others": [
+    {
+      "bullets": [
+        "Learning new technologies",
+        "Community volunteering"
+      ],
+      "title": "Activities/Hobbies"
+    }
+  ],
+  "professional_experience": [
+    {
+      "company": "Jarvis",
+      "description": "Developing data engineering and software projects using Java, Linux, SQL, and cloud technologies. Building scalable applications, writing automation scripts, and working within Agile teams to design, implement, and deploy production-ready solutions.",
+      "duration": "2026 - present",
+      "title": "Data Engineer"
+    },
+    {
+      "company": "Canada Post",
+      "description": "Sort and deliver mail and parcels while operating mobile scanning devices to track deliveries in real time. Maintain accuracy, follow safety protocols, and ensure secure handling of customer items while meeting daily delivery targets.",
+      "duration": "Nov 2023 - Present",
+      "title": "Letter Carrier"
+    },
+    {
+      "company": "Mississauga Vietnamese Community Centre",
+      "description": "Installed, configured, and troubleshot computer systems while implementing maintenance and patching protocols that reduced downtime and improved performance. Digitized media, enforced government security procedures, and maintained the community website.",
+      "duration": "May 2023 - Present",
+      "title": "IT Coordinator"
+    },
+    {
+      "company": "Peel District School Board",
+      "description": "Assisted teachers with classroom activities, supported students with technical tasks, and helped manage learning materials and educational software in a structured school environment.",
+      "duration": "Feb 2019 - Jun 2019",
+      "title": "Teaching Assistant (Co-Op)"
+    }
+  ],
+  "skills": {
+    "competent": [
+      "JavaScript",
+      "Docker",
+      "Python",
+      "Spring Boot",
+      "MongoDB"
+    ],
+    "familiar": [
+      "React",
+      "Django",
+      "Redux",
+      "REST APIs",
+      "UML"
+    ],
+    "proficient": [
+      "Java",
+      "Linux/Bash",
+      "RDBMS/SQL",
+      "Agile/Scrum",
+      "Git"
+    ]
+  },
+  "summary": "Computer Programming graduate from Humber College with a strong foundation in full-stack development, databases, and software engineering principles. Experienced in building web, mobile, and database-driven applications using Java, Python, JavaScript, React, Node.js, and SQL. Passionate about problem solving, automation, and scalable system design. Comfortable working in Agile environments and collaborating with cross-functional teams. Continuously learning new technologies and seeking opportunities to contribute to impactful software and data engineering projects."
+}
