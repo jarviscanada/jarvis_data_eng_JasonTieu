@@ -1,2 +1,6 @@
 */.idea/
 /core_java/.idea
+core_java/grep/.idea/vcs.xml
+core_java/grep/.idea/misc.xml
+core_java/grep/.idea/jarRepositories.xml
+core_java/grep/.idea/compiler.xml
