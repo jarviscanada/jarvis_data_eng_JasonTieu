@@ -6,6 +6,7 @@ public class BankAccount {
     private String accountNumber;
     private String ownerName;
     private double balance;
+    private final int threashold = 1000;
     //Stream API version
     private List<Double> transactions;
 
@@ -48,6 +49,10 @@ public class BankAccount {
     public String getAccountInfo() {
         return String.format("Account: %s\nOwner: %s\nBalance: %.2f",
                              this.accountNumber, this.ownerName, this.balance);
+    }
+
+    public int getThreshold() {
+        return this.threashold;
     }
 
     public List<Double> getTransactions() {
