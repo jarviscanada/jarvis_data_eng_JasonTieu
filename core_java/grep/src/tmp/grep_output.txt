@@ -1,0 +1,23 @@
+public interface JavaGrep {
+    public class Main implements JavaGrep {
+        public void setRootPath(String rootPath) {
+        public void setRegex(String regex) {
+        public void setOutFile(String outFile) {
+        public String getRootPath() {
+        public String getRegex() {
+        public String getOutFile() {
+        public void process() {
+        public List<String> listFiles(String rootDir) {
+        public List<String> readLines(String file) {
+        public boolean containsPattern(String line) {
+        public void writeToFile(List<String> lines) {
+        public static void main(String[] args) {
+    public static void main(String[] args){
+public interface RegexExc {
+    public boolean matchJpeg(String filename);
+    public boolean isIPv4(String ip);
+    public boolean isEmptyLine(String line);
+public class RegexExcImp implements RegexExc {
+    public boolean matchJpeg(String fileName) {
+    public boolean isIPv4(String ip) {
+    public boolean isEmptyLine(String line) {
