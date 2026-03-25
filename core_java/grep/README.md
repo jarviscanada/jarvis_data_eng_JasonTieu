@@ -18,7 +18,7 @@ Example:
 java -cp target/grep-1.0-SNAPSHOT.jar ca.jrvs.apps.grep.GrepApp ".*Romeo.*Juliet.*" ./data ./out/grep.txt
 ```
 
-#Implemenation
+# Implemenation
 ## Pseudocode
 ```
 process:
