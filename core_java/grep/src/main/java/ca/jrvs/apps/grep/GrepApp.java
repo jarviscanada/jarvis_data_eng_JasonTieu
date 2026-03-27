@@ -11,14 +11,14 @@
     import org.slf4j.Logger;
     import org.slf4j.LoggerFactory;
 
-    public class Main implements JavaGrep {
+    public class GrepApp implements JavaGrep {
 
         private String rootPath;
         private String regex;
         private String outFile;
         private List<String> matchedLines;
         private List<String> files;
-        private Logger logger = LoggerFactory.getLogger(Main.class);
+        private Logger logger = LoggerFactory.getLogger(GrepApp.class);
 
         @Override
         public void setRootPath(String rootPath) {
@@ -140,7 +140,7 @@
                 System.exit(1);
             }
 
-            Main grep = new Main();
+            GrepApp grep = new GrepApp();
             grep.setRegex(args[0]);
             grep.setRootPath(args[1]);
             grep.setOutFile(args[2]);
