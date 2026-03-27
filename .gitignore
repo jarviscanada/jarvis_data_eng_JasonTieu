@@ -6,3 +6,4 @@ core_java/grep/.idea/jarRepositories.xml
 core_java/grep/.idea/compiler.xml
 /core_java/.vscode
 /core_java/grep/.idea
+/core_java/grep/target
