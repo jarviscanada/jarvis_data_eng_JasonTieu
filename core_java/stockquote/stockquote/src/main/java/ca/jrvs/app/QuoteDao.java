@@ -36,6 +36,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
             stmt.setString(10, entity.getChangePercent());
             stmt.executeUpdate();
             c.commit();
+            
 
         } catch (SQLException e) {
             try{
@@ -43,12 +44,20 @@ public class QuoteDao implements CrudDao<Quote, String> {
             } catch (SQLException ex) {
                 databaseUtils.handleSqlException("QuoteDao.save.rollback", ex, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
             }
+        } finally {
+            try {
+                c.setAutoCommit(true);
+            } catch (SQLException e) {
+                databaseUtils.handleSqlException("QuoteDao.save.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+            }
         }
 
         Optional<Quote> savedQuote = this.findById(entity.getSymbol());
         if(!savedQuote.isPresent()){
             return null;
         }
+
+        
         return savedQuote.get();
     }
 
@@ -109,21 +118,46 @@ public class QuoteDao implements CrudDao<Quote, String> {
     @Override
     public void deleteById(String id) throws IllegalArgumentException {
         try(PreparedStatement stmt = c.prepareStatement("DELETE FROM quote WHERE symbol = ?")) {
+            c.setAutoCommit(false);
             stmt.setString(1, id);
             stmt.executeUpdate();
             c.commit();
+            
         } catch (SQLException e) {
-            databaseUtils.handleSqlException("QuoteDao.deleteById", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+            try{
+                c.rollback();
+                databaseUtils.handleSqlException("QuoteDao.deleteById", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+            } catch (SQLException ex) {
+                databaseUtils.handleSqlException("QuoteDao.deleteById.rollback", ex, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+            }
+        } finally {
+            try {
+                c.setAutoCommit(true);
+            } catch (SQLException e) {
+                databaseUtils.handleSqlException("QuoteDao.deleteById.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+            }
         }
     }
 
     @Override
     public void deleteAll() {
         try(PreparedStatement stmt = c.prepareStatement("DELETE FROM quote")) {
+            c.setAutoCommit(false);
             stmt.executeUpdate();
             c.commit();
          } catch (SQLException e) {
-            databaseUtils.handleSqlException("QuoteDao.deleteAll", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+            try{
+                c.rollback();
+                databaseUtils.handleSqlException("QuoteDao.deleteAll", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+            } catch (SQLException ex) {
+                databaseUtils.handleSqlException("QuoteDao.deleteAll.rollback", ex, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+            }
+        }finally {
+            try {
+                c.setAutoCommit(true);
+            } catch (SQLException e) {
+                databaseUtils.handleSqlException("QuoteDao.deleteAll.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+            }
         }
     }
 
