@@ -21,6 +21,10 @@ public class QuoteDao implements CrudDao<Quote, String> {
     @Override
     public Quote save(Quote entity) throws IllegalArgumentException {
         try{
+            if ( this.findById(entity.getSymbol()).isPresent()) {
+                update(entity);
+                return this.findById(entity.getSymbol()).get();
+            }
             c.setAutoCommit(false);
             PreparedStatement stmt = c.prepareStatement("INSERT INTO quote (symbol, open, high, low, price, volume, latest_trading_day, previous_close, change, change_percent) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             stmt.setString(1, entity.getSymbol());
@@ -161,4 +165,35 @@ public class QuoteDao implements CrudDao<Quote, String> {
         }
     }
 
+    public void update(Quote entity) {
+        try(PreparedStatement stmt = c.prepareStatement("UPDATE quote SET open = ?, high = ?, low = ?, price = ?, volume = ?, latest_trading_day = ?, previous_close = ?, change = ?, change_percent = ?, timestamp = now() WHERE symbol = ?")) {
+            c.setAutoCommit(false);
+            stmt.setDouble(1, entity.getOpen());
+            stmt.setDouble(2, entity.getHigh());
+            stmt.setDouble(3, entity.getLow());
+            stmt.setDouble(4, entity.getPrice());
+            stmt.setLong(5, entity.getVolume());
+            java.sql.Date sqlDate = new java.sql.Date(entity.getLatestTradingDay().getTime());
+            stmt.setDate(6, sqlDate);
+            stmt.setDouble(7, entity.getPreviousClose());
+            stmt.setDouble(8, entity.getChange());
+            stmt.setString(9, entity.getChangePercent());
+            stmt.setString(10, entity.getSymbol());
+            stmt.executeUpdate();
+            c.commit();
+        } catch (SQLException e) {
+            try{
+                c.rollback();
+                databaseUtils.handleSqlException("QuoteDao.update", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+            } catch (SQLException ex) {
+                databaseUtils.handleSqlException("QuoteDao.update.rollback", ex, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+            }
+        } finally {
+            try {
+                c.setAutoCommit(true);
+            } catch (SQLException e) {
+                databaseUtils.handleSqlException("QuoteDao.update.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+            }
+        }
+    }
 }

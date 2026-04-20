@@ -37,7 +37,7 @@ public class Main {
 
         QuoteHttpHelper helper = new QuoteHttpHelper(apiKey);
         try {
-            String[] symbols = {"MSFT", "AMD", "GOOG", "AAPL", "AMZN", "FB", "NVDA", "TSLA", "NFLX", "SU"};
+            String[] symbols = {"MSFT", "AMD", "GOOG", "AAPL"};
 
             QuoteDao quoteDao = new QuoteDao();
             for (String symbo : symbols) {
