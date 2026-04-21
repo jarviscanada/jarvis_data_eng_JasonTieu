@@ -1,4 +1,4 @@
-package ca.jrvs.app;
+package ca.jrvs.app.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
