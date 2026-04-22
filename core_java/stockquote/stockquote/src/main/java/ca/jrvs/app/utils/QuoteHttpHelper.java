@@ -1,4 +1,4 @@
-package ca.jrvs.app;
+package ca.jrvs.app.utils;
 
 import ca.jrvs.app.entity.Quote;
 import okhttp3.OkHttpClient;

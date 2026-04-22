@@ -1,14 +1,8 @@
 package ca.jrvs.app;
 
-
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
+import ca.jrvs.app.dao.QuoteDao;
 import ca.jrvs.app.entity.Quote;
-import ca.jrvs.app.utils.databaseUtils;
-
+import ca.jrvs.app.utils.QuoteHttpHelper;
 public class Main {
     public static void main(String[] args) {
         String symbol = "INTC"; // Example symbol
