@@ -2,35 +2,30 @@ package ca.jrvs.app;
 
 import ca.jrvs.app.dao.QuoteDao;
 import ca.jrvs.app.entity.Quote;
+import ca.jrvs.app.utils.PropertyLoader;
 import ca.jrvs.app.utils.QuoteHttpHelper;
 public class Main {
     public static void main(String[] args) {
-        String symbol = "INTC"; // Example symbol
-        String apiKey = "15577394camsheb78e31391269cfp18320cjsn6b88ab5739f9";
+        //QuoteHttpHelper helper = new QuoteHttpHelper();
 
-        // Testing API key and endpoint by making a direct HTTP request
-        /***HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://alpha-vantage.p.rapidapi.com/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&datatype=json"))
-                .header("X-RapidAPI-Key", apiKey)
-                .header("X-RapidAPI-Host", "alpha-vantage.p.rapidapi.com")
-                .method("GET", HttpRequest.BodyPublishers.noBody())
-                .build();
-
-        try {
-            HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-            System.out.println(response.body());
-        } catch (InterruptedException e) {
+         try {
+            // Test property loading
+            PropertyLoader loader = new PropertyLoader();
+            
+            // Test reading properties
+            System.out.println("Server: " + loader.getServer());
+            System.out.println("Database: " + loader.getDatabase());
+            System.out.println("JDBC URL: " + loader.getJdbcUrl());
+            System.out.println("API Key: " + loader.getApiKey().substring(0, 10) + "...");
+            
+            System.out.println("\n✓ Properties loaded successfully!");
+            
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } ***/
-
-        QuoteHttpHelper helper = new QuoteHttpHelper(apiKey);
-        try {
+        }
+        
+        /*try {
             String[] symbols = {"MSFT", "AMD", "GOOG", "AAPL"};
 
             QuoteDao quoteDao = new QuoteDao();
@@ -46,7 +41,7 @@ public class Main {
                     e.printStackTrace();
                 }
             }
-            Quote quote = helper.fetchQouteInfo(symbol);
+            Quote quote = helper.fetchQouteInfo("INTC");
             System.out.println(quote);
             quoteDao.save(quote);
             quoteDao.findById("MSFT").ifPresent(System.out::println);
@@ -57,6 +52,6 @@ public class Main {
             //quoteDao.findAll().forEach(System.out::println);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 }

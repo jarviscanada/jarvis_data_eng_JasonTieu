@@ -7,30 +7,39 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-public class databaseUtils {
-    private static final String URL = "jdbc:postgresql://localhost:5432/stock_quote";
-    private static final String USERNAME = "postgres";
-    private static final String PASSWORD = "password";
-    private static final Logger LOGGER = LoggerFactory.getLogger(databaseUtils.class);
+public class DatabaseUtils {
     public static final String exceptionFormat = "exception in %s, message: %s, code: %s";
     private static Connection connection;
+    private final String url;
+    private final String username;
+    private final String password;
 
-    public static Connection getConnection(){
-        if(connection == null){
-            synchronized(databaseUtils.class){
-                if(connection == null){
-                    try{
-                        connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-                        LOGGER.info("Database connection established successfully");
-                    }catch(SQLException e){
-                        handleSqlException("databaseUtils.getConnection", e, LOGGER);
-                    }
-                }
-            }
+    public DatabaseUtils(PropertyLoader propertyLoader) {
+        this.url = propertyLoader.getJdbcUrl();
+        this.username = propertyLoader.getUsername();
+        this.password = propertyLoader.getPassword();
+        
+        System.out.println("Database URL: " + url);
+    }
+
+    public Connection getConnection() throws SQLException {
+        if (connection == null || connection.isClosed()) {
+            connection = DriverManager.getConnection(url, username, password);
+            System.out.println("✓ Database connection established");
         }
         return connection;
+    }
+    
+    public void closeConnection() {
+        if (connection != null) {
+            try {
+                connection.close();
+                System.out.println("✓ Database connection closed");
+            } catch (SQLException e) {
+                System.err.println("Error closing connection: " + e.getMessage());
+            }
+        }
     }
 
     public static void handleSqlException(String method, SQLException e, Logger log){

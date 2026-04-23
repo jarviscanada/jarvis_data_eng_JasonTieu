@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 import ca.jrvs.app.entity.Position;
-import ca.jrvs.app.utils.databaseUtils;
+import ca.jrvs.app.utils.DatabaseUtils;
 
 public class PositionDao implements CrudDao<Position, String> {
     private final Connection c;
@@ -36,13 +36,13 @@ public class PositionDao implements CrudDao<Position, String> {
             try{
                 c.rollback();
             } catch (SQLException ex) {
-                databaseUtils.handleSqlException("PositionDao.save.rollback", ex, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+                DatabaseUtils.handleSqlException("PositionDao.save.rollback", ex, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
             }
         } finally {
             try {
                 c.setAutoCommit(true);
             } catch (SQLException e) {
-                databaseUtils.handleSqlException("PositionDao.save.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+                DatabaseUtils.handleSqlException("PositionDao.save.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
             }
         }
 
@@ -69,7 +69,7 @@ public class PositionDao implements CrudDao<Position, String> {
                 return Optional.empty();
             }
         } catch (SQLException e) {
-            databaseUtils.handleSqlException("PositionDao.findById", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+            DatabaseUtils.handleSqlException("PositionDao.findById", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
             return Optional.empty();
         }
     }
@@ -87,7 +87,7 @@ public class PositionDao implements CrudDao<Position, String> {
                 positions.add(position);
             }
         } catch (SQLException e) {
-            databaseUtils.handleSqlException("PositionDao.findAll", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+            DatabaseUtils.handleSqlException("PositionDao.findAll", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
         }
         return positions;
     }
@@ -102,15 +102,15 @@ public class PositionDao implements CrudDao<Position, String> {
         } catch (SQLException e) {
             try {
                 c.rollback();
-                databaseUtils.handleSqlException("PositionDao.deleteById", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+                DatabaseUtils.handleSqlException("PositionDao.deleteById", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
             } catch (SQLException ex) {
-                databaseUtils.handleSqlException("PositionDao.deleteById.rollback", ex, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+                DatabaseUtils.handleSqlException("PositionDao.deleteById.rollback", ex, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
             }
         }finally {
             try {
                 c.setAutoCommit(true);
             } catch (SQLException e) {
-                databaseUtils.handleSqlException("PositionDao.deleteById.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+                DatabaseUtils.handleSqlException("PositionDao.deleteById.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
             }
         }
     }
@@ -120,7 +120,7 @@ public class PositionDao implements CrudDao<Position, String> {
         try(PreparedStatement stmt = c.prepareStatement("DELETE FROM position")){
             stmt.executeUpdate();
         } catch (SQLException e) {
-            databaseUtils.handleSqlException("PositionDao.deleteAll", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+            DatabaseUtils.handleSqlException("PositionDao.deleteAll", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
         }
     }
 
@@ -135,15 +135,15 @@ public class PositionDao implements CrudDao<Position, String> {
         } catch (SQLException e) {
             try {
                 c.rollback();
-                databaseUtils.handleSqlException("PositionDao.update", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+                DatabaseUtils.handleSqlException("PositionDao.update", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
             } catch (SQLException ex) {
-                databaseUtils.handleSqlException("PositionDao.update.rollback", ex, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+                DatabaseUtils.handleSqlException("PositionDao.update.rollback", ex, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
             }
         } finally {
             try {
                 c.setAutoCommit(true);
             } catch (SQLException e) {
-                databaseUtils.handleSqlException("PositionDao.update.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+                DatabaseUtils.handleSqlException("PositionDao.update.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
             }
         }
     }

@@ -9,13 +9,13 @@ import java.util.List;
 import java.util.Optional;
 
 import ca.jrvs.app.entity.Quote;
-import ca.jrvs.app.utils.databaseUtils;
+import ca.jrvs.app.utils.DatabaseUtils;
 
 public class QuoteDao implements CrudDao<Quote, String> {
     private final Connection c;
 
     public QuoteDao() {
-        this.c = databaseUtils.getConnection();
+        this.c = DatabaseUtils.getConnection();
     }
 
     @Override
@@ -46,13 +46,13 @@ public class QuoteDao implements CrudDao<Quote, String> {
             try{
                 c.rollback();
             } catch (SQLException ex) {
-                databaseUtils.handleSqlException("QuoteDao.save.rollback", ex, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+                DatabaseUtils.handleSqlException("QuoteDao.save.rollback", ex, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
             }
         } finally {
             try {
                 c.setAutoCommit(true);
             } catch (SQLException e) {
-                databaseUtils.handleSqlException("QuoteDao.save.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+                DatabaseUtils.handleSqlException("QuoteDao.save.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
             }
         }
 
@@ -88,7 +88,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
                 return Optional.empty();
             }
         } catch (SQLException e) {
-            databaseUtils.handleSqlException("QuoteDao.findById", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+            DatabaseUtils.handleSqlException("QuoteDao.findById", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
             return Optional.empty();
         }
     }
@@ -114,7 +114,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
                 quotes.add(quote);
             }
         } catch (SQLException e) {
-            databaseUtils.handleSqlException("QuoteDao.findAll", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+            DatabaseUtils.handleSqlException("QuoteDao.findAll", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
         }
         return quotes;
     }
@@ -130,15 +130,15 @@ public class QuoteDao implements CrudDao<Quote, String> {
         } catch (SQLException e) {
             try{
                 c.rollback();
-                databaseUtils.handleSqlException("QuoteDao.deleteById", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+                DatabaseUtils.handleSqlException("QuoteDao.deleteById", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
             } catch (SQLException ex) {
-                databaseUtils.handleSqlException("QuoteDao.deleteById.rollback", ex, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+                DatabaseUtils.handleSqlException("QuoteDao.deleteById.rollback", ex, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
             }
         } finally {
             try {
                 c.setAutoCommit(true);
             } catch (SQLException e) {
-                databaseUtils.handleSqlException("QuoteDao.deleteById.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+                DatabaseUtils.handleSqlException("QuoteDao.deleteById.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
             }
         }
     }
@@ -152,15 +152,15 @@ public class QuoteDao implements CrudDao<Quote, String> {
          } catch (SQLException e) {
             try{
                 c.rollback();
-                databaseUtils.handleSqlException("QuoteDao.deleteAll", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+                DatabaseUtils.handleSqlException("QuoteDao.deleteAll", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
             } catch (SQLException ex) {
-                databaseUtils.handleSqlException("QuoteDao.deleteAll.rollback", ex, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+                DatabaseUtils.handleSqlException("QuoteDao.deleteAll.rollback", ex, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
             }
         }finally {
             try {
                 c.setAutoCommit(true);
             } catch (SQLException e) {
-                databaseUtils.handleSqlException("QuoteDao.deleteAll.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+                DatabaseUtils.handleSqlException("QuoteDao.deleteAll.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
             }
         }
     }
@@ -184,15 +184,15 @@ public class QuoteDao implements CrudDao<Quote, String> {
         } catch (SQLException e) {
             try{
                 c.rollback();
-                databaseUtils.handleSqlException("QuoteDao.update", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+                DatabaseUtils.handleSqlException("QuoteDao.update", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
             } catch (SQLException ex) {
-                databaseUtils.handleSqlException("QuoteDao.update.rollback", ex, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+                DatabaseUtils.handleSqlException("QuoteDao.update.rollback", ex, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
             }
         } finally {
             try {
                 c.setAutoCommit(true);
             } catch (SQLException e) {
-                databaseUtils.handleSqlException("QuoteDao.update.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
+                DatabaseUtils.handleSqlException("QuoteDao.update.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(QuoteDao.class));
             }
         }
     }

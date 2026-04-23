@@ -9,9 +9,10 @@ import java.io.IOException;
 public class QuoteHttpHelper {
     private String apiKey;
     private OkHttpClient client;
+    private static final PropertyLoader propertyLoader = new PropertyLoader();
     
-    public QuoteHttpHelper(String apiKey) {
-        this.apiKey = apiKey;
+    public QuoteHttpHelper() {
+        this.apiKey = propertyLoader.getProperty("api-key");
         this.client = new OkHttpClient();
     }
 
