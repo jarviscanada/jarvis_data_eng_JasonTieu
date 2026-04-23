@@ -14,8 +14,8 @@ import ca.jrvs.app.utils.DatabaseUtils;
 public class QuoteDao implements CrudDao<Quote, String> {
     private final Connection c;
 
-    public QuoteDao() {
-        this.c = DatabaseUtils.getConnection();
+    public QuoteDao(Connection c) {
+        this.c = c;
     }
 
     @Override

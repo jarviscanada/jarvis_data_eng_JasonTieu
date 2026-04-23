@@ -22,6 +22,10 @@ public class QuoteService {
         }
     }
 
+    public Quote findQuoteByTicker(String ticker) {
+        return quoteDao.findById(ticker).orElse(null);
+    }
+
     public QuoteService(QuoteDao quoteDao, QuoteHttpHelper quoteHttpHelper) {
         this.quoteDao = quoteDao;
         this.quoteHttpHelper = quoteHttpHelper;

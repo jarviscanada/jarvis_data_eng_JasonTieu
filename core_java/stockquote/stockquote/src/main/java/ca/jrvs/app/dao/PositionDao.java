@@ -148,15 +148,35 @@ public class PositionDao implements CrudDao<Position, String> {
         }
     }
 
-    public void addShares(String ticker, int additionalShares, double additionalValue) {
-        Optional<Position> positionOpt = findById(ticker);
+    public void addShares(Position position) {
+        Optional<Position> positionOpt = findById(position.getTicker());
         if(positionOpt.isPresent()){
-            Position position = positionOpt.get();
-            int newNumOfShares = position.getNumOfShares() + additionalShares;
-            double newValuePaid = position.getValuePaid() + additionalValue;
+            Position existingPosition = positionOpt.get();
+            int newNumOfShares = existingPosition.getNumOfShares() + position.getNumOfShares();
+            double newValuePaid = existingPosition.getValuePaid() + position.getValuePaid();
             position.setNumOfShares(newNumOfShares);
             position.setValuePaid(newValuePaid);
             update(position);
+        } else {
+           save(position);
+        }
+    }
+
+    public void removeShares(String ticker, int numOfSharesToRemove) {
+        Optional<Position> positionOpt = findById(ticker);
+        if(positionOpt.isPresent()){
+            Position existingPosition = positionOpt.get();
+            int newNumOfShares = existingPosition.getNumOfShares() - numOfSharesToRemove;
+            double newValuePaid = existingPosition.getValuePaid() / existingPosition.getNumOfShares() * newNumOfShares;
+            if(newNumOfShares < 0 || newValuePaid < 0){
+                throw new IllegalArgumentException("Cannot remove more shares or value than currently held.");
+            }else if (newNumOfShares == 0){
+                deleteById(ticker);
+                return;
+            }
+            existingPosition.setNumOfShares(newNumOfShares);
+            existingPosition.setValuePaid(newValuePaid);
+            update(existingPosition);
         } else {
             throw new IllegalArgumentException("Position with ticker " + ticker + " not found.");
         }
