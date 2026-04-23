@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 import ca.jrvs.app.entity.Position;
-import ca.jrvs.app.utils.databaseUtils;
+import ca.jrvs.app.utils.DatabaseUtils;
 
 public class PositionDao implements CrudDao<Position, String> {
     private final Connection c;
@@ -36,13 +36,13 @@ public class PositionDao implements CrudDao<Position, String> {
             try{
                 c.rollback();
             } catch (SQLException ex) {
-                databaseUtils.handleSqlException("PositionDao.save.rollback", ex, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+                DatabaseUtils.handleSqlException("PositionDao.save.rollback", ex, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
             }
         } finally {
             try {
                 c.setAutoCommit(true);
             } catch (SQLException e) {
-                databaseUtils.handleSqlException("PositionDao.save.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+                DatabaseUtils.handleSqlException("PositionDao.save.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
             }
         }
 
@@ -69,7 +69,7 @@ public class PositionDao implements CrudDao<Position, String> {
                 return Optional.empty();
             }
         } catch (SQLException e) {
-            databaseUtils.handleSqlException("PositionDao.findById", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+            DatabaseUtils.handleSqlException("PositionDao.findById", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
             return Optional.empty();
         }
     }
@@ -87,7 +87,7 @@ public class PositionDao implements CrudDao<Position, String> {
                 positions.add(position);
             }
         } catch (SQLException e) {
-            databaseUtils.handleSqlException("PositionDao.findAll", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+            DatabaseUtils.handleSqlException("PositionDao.findAll", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
         }
         return positions;
     }
@@ -102,15 +102,15 @@ public class PositionDao implements CrudDao<Position, String> {
         } catch (SQLException e) {
             try {
                 c.rollback();
-                databaseUtils.handleSqlException("PositionDao.deleteById", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+                DatabaseUtils.handleSqlException("PositionDao.deleteById", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
             } catch (SQLException ex) {
-                databaseUtils.handleSqlException("PositionDao.deleteById.rollback", ex, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+                DatabaseUtils.handleSqlException("PositionDao.deleteById.rollback", ex, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
             }
         }finally {
             try {
                 c.setAutoCommit(true);
             } catch (SQLException e) {
-                databaseUtils.handleSqlException("PositionDao.deleteById.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+                DatabaseUtils.handleSqlException("PositionDao.deleteById.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
             }
         }
     }
@@ -120,7 +120,7 @@ public class PositionDao implements CrudDao<Position, String> {
         try(PreparedStatement stmt = c.prepareStatement("DELETE FROM position")){
             stmt.executeUpdate();
         } catch (SQLException e) {
-            databaseUtils.handleSqlException("PositionDao.deleteAll", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+            DatabaseUtils.handleSqlException("PositionDao.deleteAll", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
         }
     }
 
@@ -135,28 +135,48 @@ public class PositionDao implements CrudDao<Position, String> {
         } catch (SQLException e) {
             try {
                 c.rollback();
-                databaseUtils.handleSqlException("PositionDao.update", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+                DatabaseUtils.handleSqlException("PositionDao.update", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
             } catch (SQLException ex) {
-                databaseUtils.handleSqlException("PositionDao.update.rollback", ex, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+                DatabaseUtils.handleSqlException("PositionDao.update.rollback", ex, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
             }
         } finally {
             try {
                 c.setAutoCommit(true);
             } catch (SQLException e) {
-                databaseUtils.handleSqlException("PositionDao.update.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+                DatabaseUtils.handleSqlException("PositionDao.update.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
             }
         }
     }
 
-    public void addShares(String ticker, int additionalShares, double additionalValue) {
-        Optional<Position> positionOpt = findById(ticker);
+    public void addShares(Position position) {
+        Optional<Position> positionOpt = findById(position.getTicker());
         if(positionOpt.isPresent()){
-            Position position = positionOpt.get();
-            int newNumOfShares = position.getNumOfShares() + additionalShares;
-            double newValuePaid = position.getValuePaid() + additionalValue;
+            Position existingPosition = positionOpt.get();
+            int newNumOfShares = existingPosition.getNumOfShares() + position.getNumOfShares();
+            double newValuePaid = existingPosition.getValuePaid() + position.getValuePaid();
             position.setNumOfShares(newNumOfShares);
             position.setValuePaid(newValuePaid);
             update(position);
+        } else {
+           save(position);
+        }
+    }
+
+    public void removeShares(String ticker, int numOfSharesToRemove) {
+        Optional<Position> positionOpt = findById(ticker);
+        if(positionOpt.isPresent()){
+            Position existingPosition = positionOpt.get();
+            int newNumOfShares = existingPosition.getNumOfShares() - numOfSharesToRemove;
+            double newValuePaid = existingPosition.getValuePaid() / existingPosition.getNumOfShares() * newNumOfShares;
+            if(newNumOfShares < 0 || newValuePaid < 0){
+                throw new IllegalArgumentException("Cannot remove more shares or value than currently held.");
+            }else if (newNumOfShares == 0){
+                deleteById(ticker);
+                return;
+            }
+            existingPosition.setNumOfShares(newNumOfShares);
+            existingPosition.setValuePaid(newValuePaid);
+            update(existingPosition);
         } else {
             throw new IllegalArgumentException("Position with ticker " + ticker + " not found.");
         }

@@ -10,8 +10,8 @@ public class QuoteHttpHelper {
     private String apiKey;
     private OkHttpClient client;
     
-    public QuoteHttpHelper(String apiKey) {
-        this.apiKey = apiKey;
+    public QuoteHttpHelper(PropertyLoader propertyLoader) {
+        this.apiKey = propertyLoader.getProperty("api-key");
         this.client = new OkHttpClient();
     }
 
