@@ -33,7 +33,7 @@ public class QuoteService_UnitTest {
         Quote quote = new Quote();
         quote.setSymbol("AAPL");
 
-        when(httpHelper.fetchQouteInfo("AAPL")).thenReturn(quote);
+        when(httpHelper.fetchQuoteInfo("AAPL")).thenReturn(quote);
         when(quoteDao.save(quote)).thenReturn(quote);
 
         Optional<Quote> result = service.fetchQuoteDataFromAPI("AAPL");
@@ -41,13 +41,13 @@ public class QuoteService_UnitTest {
         assertTrue(result.isPresent());
         assertEquals("AAPL", result.get().getSymbol());
 
-        verify(httpHelper, times(1)).fetchQouteInfo("AAPL");
+        verify(httpHelper, times(1)).fetchQuoteInfo("AAPL");
         verify(quoteDao, times(1)).save(quote);
     }
 
     @Test
     public void fetchQuoteDataFromAPI_shouldReturnEmpty_onException() {
-        when(httpHelper.fetchQouteInfo("AAPL"))
+        when(httpHelper.fetchQuoteInfo("AAPL"))
                 .thenThrow(new RuntimeException("API error"));
 
         Optional<Quote> result = service.fetchQuoteDataFromAPI("AAPL");

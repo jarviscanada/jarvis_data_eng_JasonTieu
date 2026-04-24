@@ -4,6 +4,7 @@ import ca.jrvs.app.entity.Quote;
 import okhttp3.*;
 import org.junit.*;
 import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 import java.io.IOException;
@@ -23,7 +24,7 @@ public class QuoteHttpHelper_UnitTest {
 
         when(mockLoader.getProperty("api-key")).thenReturn("fake-key");
 
-        helper = new QuoteHttpHelper(mockLoader);
+        helper = new QuoteHttpHelper(mockClient, mockLoader);
     }
 
     private String fakeJson() {
@@ -47,7 +48,7 @@ public class QuoteHttpHelper_UnitTest {
     public void fetchQuoteInfo_shouldReturnQuote_success() throws Exception {
 
         Response response = new Response.Builder()
-                .request(new Request.Builder().url("http://test.com").build())
+                .request(new Request.Builder().url("http://HTTP.dev").build())
                 .protocol(Protocol.HTTP_1_1)
                 .code(200)
                 .message("OK")
@@ -60,7 +61,7 @@ public class QuoteHttpHelper_UnitTest {
         when(mockClient.newCall(any(Request.class))).thenReturn(mockCall);
         when(mockCall.execute()).thenReturn(response);
 
-        Quote result = helper.fetchQouteInfo("AAPL");
+        Quote result = helper.fetchQuoteInfo("AAPL");
 
         assertNotNull(result);
         assertEquals("AAPL", result.getSymbol());
@@ -73,7 +74,7 @@ public class QuoteHttpHelper_UnitTest {
         when(mockClient.newCall(any(Request.class))).thenReturn(mockCall);
         when(mockCall.execute()).thenThrow(new IOException("network error"));
 
-        Quote result = helper.fetchQouteInfo("AAPL");
+        Quote result = helper.fetchQuoteInfo("AAPL");
 
         assertNull(result);
     }
@@ -92,6 +93,6 @@ public class QuoteHttpHelper_UnitTest {
         when(mockClient.newCall(any(Request.class))).thenReturn(mockCall);
         when(mockCall.execute()).thenReturn(response);
 
-        helper.fetchQouteInfo("AAPL");
+        helper.fetchQuoteInfo("AAPL");
     }
 }

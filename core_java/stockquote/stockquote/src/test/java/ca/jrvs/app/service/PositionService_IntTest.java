@@ -1,7 +1,9 @@
 package ca.jrvs.app.service;
 
 import ca.jrvs.app.dao.PositionDao;
+import ca.jrvs.app.dao.QuoteDao;
 import ca.jrvs.app.entity.Position;
+import ca.jrvs.app.entity.Quote;
 
 import org.junit.*;
 
@@ -24,6 +26,22 @@ public class PositionService_IntTest {
                 "postgres",
                 "password"
         );
+
+        QuoteDao quoteDao = new QuoteDao(connection);
+
+        Quote q = new Quote();
+        q.setSymbol("AAPL");
+        q.setPrice(100);
+        q.setOpen(100);
+        q.setHigh(100);
+        q.setLow(100);
+        q.setVolume(100);
+        q.setPreviousClose(100);
+        q.setChange(0);
+        q.setChangePercent("0%");
+        q.setLatestTradingDay(new java.util.Date());
+
+        quoteDao.save(q);
 
         dao = new PositionDao(connection);
         service = new PositionService(dao);

@@ -1,5 +1,4 @@
 package ca.jrvs.app.dao;
-import ca.jrvs.app.dao.QuoteDao;
 import ca.jrvs.app.entity.Quote;
 
 import org.junit.*;
@@ -26,6 +25,7 @@ public class QuoteDaoTest {
 
         // Clean table before each test
         Statement stmt = connection.createStatement();
+        stmt.execute("DELETE FROM position");
         stmt.execute("DELETE FROM quote");
     }
 
@@ -46,12 +46,12 @@ public class QuoteDaoTest {
 
     @Test
     public void save_shouldInsertQuote() {
-        Quote q = buildQuote("AAPL");
+        Quote q = buildQuote("APPL");
 
         Quote saved = dao.save(q);
 
         assertNotNull(saved);
-        assertEquals("AAPL", saved.getSymbol());
+        assertEquals("APPL", saved.getSymbol());
     }
 
     @Test
@@ -100,4 +100,5 @@ public class QuoteDaoTest {
 
         assertEquals(999, updated.get().getPrice(), 0.001);
     }
+
 }

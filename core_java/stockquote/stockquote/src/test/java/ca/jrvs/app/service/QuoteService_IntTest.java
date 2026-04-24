@@ -23,26 +23,27 @@ public class QuoteService_IntTest {
     @Before
     public void setUp() throws Exception {
 
-        // REAL DB connection (integration test)
-        connection = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/testdb",
-                "postgres",
-                "password"
-        );
+    connection = DriverManager.getConnection(
+            "jdbc:postgresql://localhost:5432/testdb",
+            "postgres",
+            "password"
+    );
 
-        dao = new QuoteDao(connection);
+    connection.createStatement().executeUpdate("DELETE FROM position");
+    connection.createStatement().executeUpdate("DELETE FROM quote");
 
-        // FAKE HTTP helper (no API call)
-       QuoteHttpHelper fakeHttp =
-        new FakeQuoteHttpHelper(new PropertyLoader() {
-            @Override
-            public String getProperty(String key) {
-                return "fake";
-            }
-        });
+    dao = new QuoteDao(connection);
 
-        service = new QuoteService(dao, fakeHttp);
-    }
+    QuoteHttpHelper fakeHttp =
+            new FakeQuoteHttpHelper(new PropertyLoader() {
+                @Override
+                public String getProperty(String key) {
+                    return "fake";
+                }
+            });
+
+    service = new QuoteService(dao, fakeHttp);
+}
 
     @After
     public void tearDown() throws Exception {
