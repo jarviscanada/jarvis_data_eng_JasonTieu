@@ -8,10 +8,14 @@ import ca.jrvs.app.service.QuoteService;
 import java.util.Optional;
 import java.util.Scanner;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class StockQuoteController {
     private QuoteService quoteService;
     private PositionService positionService;
     private Scanner scanner;
+    private static final Logger log = LoggerFactory.getLogger(StockQuoteController.class);
 
     public StockQuoteController(QuoteService quoteService, PositionService positionService) {
         this.quoteService = quoteService;
@@ -21,6 +25,7 @@ public class StockQuoteController {
 
     public void initClient() {
         boolean running = true;
+        log.info("Stock Quote Application started");
         while (running) {
             printMenu();
             String choice = scanner.nextLine().trim();
@@ -38,6 +43,7 @@ public class StockQuoteController {
                 case "4":
                     running = false;
                     System.out.println("Goodbye!");
+                    log.info("Stock Quote Application exited");
                     break;
                 default:
                     System.out.println("Invalid option. Please try again.");
@@ -52,22 +58,26 @@ public class StockQuoteController {
         System.out.println("3. View Position");
         System.out.println("4. Exit");
         System.out.print("Enter your choice: ");
+        log.info("Printing menu options.");
+
     }
 
     private void viewQuote() {
         System.out.print("Enter ticker symbol: ");
         String ticker = scanner.nextLine().trim().toUpperCase();
+        log.info("User requested quote for ticker: " + ticker);
         
         if (ticker.isEmpty()) {
-            System.out.println("Error: Ticker cannot be empty.");
+            log.error("Error: Ticker cannot be empty.");
             return;
         }
         
         Optional<Quote> quote = quoteService.fetchQuoteDataFromAPI(ticker);
         if (quote.isPresent()) {
             System.out.println("Quote for " + ticker + ": " + quote.get());
+            log.info("Displayed quote for " + ticker);
         } else {
-            System.out.println("No quote found for " + ticker);
+            log.error("No quote found for " + ticker);
         }
     }
 
@@ -76,18 +86,20 @@ public class StockQuoteController {
         System.out.println("2. Sell");
         System.out.print("Enter your choice: ");
         String action = scanner.nextLine().trim();
+        log.info("User selected action: " + action);
         
         
         if (!action.equals("1") && !action.equals("2")) {
-            System.out.println("Error: Please enter '1' or '2'.");
+            log.error("Error: Please enter '1' or '2'.");
             return;
         }
         
         System.out.print("Enter ticker symbol: ");
         String ticker = scanner.nextLine().trim().toUpperCase();
+        log.info("User entered ticker: " + ticker);
         
         if (ticker.isEmpty()) {
-            System.out.println("Error: Ticker cannot be empty.");
+            log.error("Error: Ticker cannot be empty.");
             return;
         }
         
@@ -96,8 +108,9 @@ public class StockQuoteController {
             int numOfShares;
             try {
                 numOfShares = Integer.parseInt(scanner.nextLine().trim());
+                log.info("User entered number of shares: " + numOfShares);
             } catch (NumberFormatException e) {
-                System.out.println("Error: Invalid number of shares.");
+                log.error("Error: Invalid number of shares.");
                 return;
             }
             
@@ -106,25 +119,27 @@ public class StockQuoteController {
             try {
                 valuePaid = Double.parseDouble(scanner.nextLine().trim());
             } catch (NumberFormatException e) {
-                System.out.println("Error: Invalid value.");
+                log.error("Error: Invalid value.");
                 return;
             }
             
             positionService.buy(ticker, numOfShares, valuePaid);
             System.out.println("Bought " + numOfShares + " shares of " + ticker);
+            log.info("Bought " + numOfShares + " shares of " + ticker);
         } else if (action.equals("2")) {
             System.out.print("Enter number of shares to sell: ");
             int numOfSharesToSell;
             try {
                 numOfSharesToSell = Integer.parseInt(scanner.nextLine().trim());
             } catch (NumberFormatException e) {
-                System.out.println("Error: Invalid number of shares.");
+                log.error("Error: Invalid number of shares.");
                 return;
             }
             positionService.sell(ticker, numOfSharesToSell);
             System.out.println("Sold " + numOfSharesToSell + " shares of " + ticker);
+            log.info("Sold " + numOfSharesToSell + " shares of " + ticker);
         }else {
-            System.out.println("Invalid action. Please try again.");
+            log.error("Invalid action. Please try again.");
         }
     }
 
@@ -133,7 +148,7 @@ public class StockQuoteController {
         String ticker = scanner.nextLine().trim().toUpperCase();
         
         if (ticker.isEmpty()) {
-            System.out.println("Error: Ticker cannot be empty.");
+            log.error("Error: Ticker cannot be empty.");
             return;
         }
         
@@ -142,8 +157,9 @@ public class StockQuoteController {
             System.out.println("Position for " + ticker + ":");
             System.out.println("  Shares: " + position.get().getNumOfShares());
             System.out.println("  Value Paid: $" + position.get().getValuePaid());
+            log.info("Displayed position for " + ticker);
         } else {
-            System.out.println("No position found for " + ticker);
+            log.error("No position found for " + ticker);
         }
     }
 }

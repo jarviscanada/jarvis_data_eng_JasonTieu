@@ -11,8 +11,12 @@ import java.util.Optional;
 import ca.jrvs.app.entity.Quote;
 import ca.jrvs.app.utils.DatabaseUtils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class QuoteDao implements CrudDao<Quote, String> {
     private final Connection c;
+    private static final Logger log = LoggerFactory.getLogger(QuoteDao.class);
 
     public QuoteDao(Connection c) {
         this.c = c;
@@ -40,6 +44,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
             stmt.setString(10, entity.getChangePercent());
             stmt.executeUpdate();
             c.commit();
+            log.info("Saved quote for " + entity.getSymbol());
             
 
         } catch (SQLException e) {

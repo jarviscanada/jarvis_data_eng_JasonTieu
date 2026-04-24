@@ -11,8 +11,12 @@ import java.util.Optional;
 import ca.jrvs.app.entity.Position;
 import ca.jrvs.app.utils.DatabaseUtils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class PositionDao implements CrudDao<Position, String> {
     private final Connection c;
+    private static final Logger log = LoggerFactory.getLogger(PositionDao.class);
 
     public PositionDao(Connection c) {
         this.c = c;
@@ -31,6 +35,8 @@ public class PositionDao implements CrudDao<Position, String> {
             stmt.setInt(2, entity.getNumOfShares());
             stmt.setDouble(3, entity.getValuePaid());
             stmt.executeUpdate();
+            c.commit();
+            log.info("Saved position for " + entity.getTicker());
 
         }catch (Exception e) {
             try{
@@ -64,6 +70,7 @@ public class PositionDao implements CrudDao<Position, String> {
                 position.setTicker(rs.getString("symbol"));
                 position.setNumOfShares(rs.getInt("number_of_shares"));
                 position.setValuePaid(rs.getDouble("value_paid"));
+                log.info("Found position for " + id + ": " + position.getNumOfShares() + " shares, value paid: $" + position.getValuePaid());
                 return Optional.of(position);
             } else {
                 return Optional.empty();
@@ -86,6 +93,7 @@ public class PositionDao implements CrudDao<Position, String> {
                 position.setValuePaid(rs.getDouble("value_paid"));
                 positions.add(position);
             }
+            log.info("Retrieved all positions. Total count: " + positions.size());
         } catch (SQLException e) {
             DatabaseUtils.handleSqlException("PositionDao.findAll", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
         }
@@ -99,6 +107,7 @@ public class PositionDao implements CrudDao<Position, String> {
             stmt.setString(1, id);
             stmt.executeUpdate();
             c.commit();
+            log.info("Deleted position for " + id);
         } catch (SQLException e) {
             try {
                 c.rollback();
@@ -119,6 +128,7 @@ public class PositionDao implements CrudDao<Position, String> {
     public void deleteAll() {
         try(PreparedStatement stmt = c.prepareStatement("DELETE FROM position")){
             stmt.executeUpdate();
+            log.info("Deleted all positions");
         } catch (SQLException e) {
             DatabaseUtils.handleSqlException("PositionDao.deleteAll", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
         }
@@ -132,6 +142,8 @@ public class PositionDao implements CrudDao<Position, String> {
             stmt.setString(3, position.getTicker());
             stmt.executeUpdate();
             c.commit();
+            log.info("Updated position for " + position.getTicker());
+
         } catch (SQLException e) {
             try {
                 c.rollback();
@@ -157,6 +169,7 @@ public class PositionDao implements CrudDao<Position, String> {
             position.setNumOfShares(newNumOfShares);
             position.setValuePaid(newValuePaid);
             update(position);
+            log.info("Added shares to position for " + position.getTicker() + ". New number of shares: " + newNumOfShares + ", New value paid: " + newValuePaid);
         } else {
            save(position);
         }
@@ -169,6 +182,7 @@ public class PositionDao implements CrudDao<Position, String> {
             int newNumOfShares = existingPosition.getNumOfShares() - numOfSharesToRemove;
             double newValuePaid = existingPosition.getValuePaid() / existingPosition.getNumOfShares() * newNumOfShares;
             if(newNumOfShares < 0 || newValuePaid < 0){
+                log.error("Cannot remove more shares or value than currently held for " + ticker);
                 throw new IllegalArgumentException("Cannot remove more shares or value than currently held.");
             }else if (newNumOfShares == 0){
                 deleteById(ticker);
@@ -177,6 +191,7 @@ public class PositionDao implements CrudDao<Position, String> {
             existingPosition.setNumOfShares(newNumOfShares);
             existingPosition.setValuePaid(newValuePaid);
             update(existingPosition);
+            log.info("Removed shares from position for " + existingPosition.getTicker() + ". New number of shares: " + newNumOfShares + ", New value paid: " + newValuePaid);
         } else {
             throw new IllegalArgumentException("Position with ticker " + ticker + " not found.");
         }

@@ -7,9 +7,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DatabaseUtils {
     public static final String exceptionFormat = "exception in %s, message: %s, code: %s";
+    private static final Logger log = LoggerFactory.getLogger(DatabaseUtils.class);
     private static Connection connection;
     private final String url;
     private final String username;
@@ -20,13 +22,13 @@ public class DatabaseUtils {
         this.username = propertyLoader.getUsername();
         this.password = propertyLoader.getPassword();
         
-        System.out.println("Database URL: " + url);
+        log.info("Database URL: " + url);
     }
 
     public Connection getConnection() throws SQLException {
         if (connection == null || connection.isClosed()) {
             connection = DriverManager.getConnection(url, username, password);
-            System.out.println("✓ Database connection established");
+            log.info("Database connection established");
         }
         return connection;
     }
@@ -35,9 +37,9 @@ public class DatabaseUtils {
         if (connection != null) {
             try {
                 connection.close();
-                System.out.println("✓ Database connection closed");
+                log.info("Database connection closed");
             } catch (SQLException e) {
-                System.err.println("Error closing connection: " + e.getMessage());
+                log.error("Error closing connection: " + e.getMessage());
             }
         }
     }
@@ -52,15 +54,15 @@ public class DatabaseUtils {
                 Statement stmt = connection.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT current_database()");
                 if (rs.next()) {
-                    System.out.println("Connected to database: " + rs.getString(1));
+                    log.info("Connected to database: " + rs.getString(1));
                 }
                 
                 rs = stmt.executeQuery("SELECT COUNT(*) FROM public.\"quote\"");
                 if (rs.next()) {
-                    System.out.println("Total quotes in table: " + rs.getInt(1));
+                    log.info("Total quotes in table: " + rs.getInt(1));
                 }
             } catch (SQLException e) {
-                e.printStackTrace();
+                log.error("Error checking database connection: " + e.getMessage());
             }
     }
 }
