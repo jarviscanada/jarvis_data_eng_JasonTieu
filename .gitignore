@@ -9,3 +9,4 @@ core_java/grep/.idea/compiler.xml
 /core_java/grep/target
 /core_java/stockquote/stockquote/target
 /core_java/stockquote/stockquote/.vscode
+/core_java/stockquote/stockquote/logs
