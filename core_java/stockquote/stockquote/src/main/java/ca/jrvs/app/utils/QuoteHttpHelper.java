@@ -10,19 +10,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class QuoteHttpHelper {
-    private String apiKey;
+    private final PropertyLoader loader;
     private OkHttpClient client;
     private static final Logger log = LoggerFactory.getLogger(QuoteHttpHelper.class);
     
-    public QuoteHttpHelper(PropertyLoader propertyLoader) {
-        this.apiKey = propertyLoader.getProperty("api-key");
-        this.client = new OkHttpClient();
+    public QuoteHttpHelper(OkHttpClient client, PropertyLoader loader) {
+        this.client = client;
+        this.loader = loader;
     }
 
-    public Quote fetchQouteInfo (String symbol) throws IllegalArgumentException {
+    public Quote fetchQuoteInfo (String symbol) throws IllegalArgumentException {
         Request request = new Request.Builder()
                 .url("https://alpha-vantage.p.rapidapi.com/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&datatype=json")
-                .addHeader("X-RapidAPI-Key", apiKey)
+                .addHeader("X-RapidAPI-Key", loader.getProperty("api-key"))
                 .addHeader("X-RapidAPI-Host", "alpha-vantage.p.rapidapi.com")
                 .build();
 
@@ -40,5 +40,10 @@ public class QuoteHttpHelper {
             log.error("Error fetching quote info for symbol " + symbol, e);
         }
         return null;
+    }
+
+    public Quote fetchQouteInfo(String symbol) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'fetchQouteInfo'");
     }
 }

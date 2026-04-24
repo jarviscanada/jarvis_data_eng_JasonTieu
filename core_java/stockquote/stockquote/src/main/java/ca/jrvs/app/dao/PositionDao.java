@@ -24,41 +24,30 @@ public class PositionDao implements CrudDao<Position, String> {
 
     @Override
     public Position save(Position entity) throws IllegalArgumentException {
-        try{
-            if ( this.findById(entity.getTicker()).isPresent()) {
-                update(entity);
-                return this.findById(entity.getTicker()).get();
-            }
-            c.setAutoCommit(false);
-            PreparedStatement stmt = c.prepareStatement("INSERT INTO position (symbol, number_of_shares, value_paid) VALUES (?, ?, ?)");
+    try {
+
+        if (this.findById(entity.getTicker()).isPresent()) {
+            update(entity);
+            return this.findById(entity.getTicker()).get();
+        }
+
+        try (PreparedStatement stmt =
+                     c.prepareStatement("INSERT INTO position (symbol, number_of_shares, value_paid) VALUES (?, ?, ?)")) {
+
             stmt.setString(1, entity.getTicker());
             stmt.setInt(2, entity.getNumOfShares());
             stmt.setDouble(3, entity.getValuePaid());
             stmt.executeUpdate();
-            c.commit();
-            log.info("Saved position for " + entity.getTicker());
 
-        }catch (Exception e) {
-            try{
-                c.rollback();
-            } catch (SQLException ex) {
-                DatabaseUtils.handleSqlException("PositionDao.save.rollback", ex, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
-            }
-        } finally {
-            try {
-                c.setAutoCommit(true);
-            } catch (SQLException e) {
-                DatabaseUtils.handleSqlException("PositionDao.save.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
-            }
+            log.info("Saved position for " + entity.getTicker());
         }
 
-            Optional<Position> savedPosition = this.findById(entity.getTicker());
-            if(!savedPosition.isPresent()){
-                return null;
-            }
-
-            return savedPosition.get();
+    } catch (SQLException e) {
+        DatabaseUtils.handleSqlException("PositionDao.save", e, log);
     }
+
+    return findById(entity.getTicker()).orElse(null);
+}
 
     @Override
     public Optional<Position> findById(String id) throws IllegalArgumentException {
@@ -76,7 +65,7 @@ public class PositionDao implements CrudDao<Position, String> {
                 return Optional.empty();
             }
         } catch (SQLException e) {
-            DatabaseUtils.handleSqlException("PositionDao.findById", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+            DatabaseUtils.handleSqlException("PositionDao.findById", e, log);
             return Optional.empty();
         }
     }
@@ -95,7 +84,7 @@ public class PositionDao implements CrudDao<Position, String> {
             }
             log.info("Retrieved all positions. Total count: " + positions.size());
         } catch (SQLException e) {
-            DatabaseUtils.handleSqlException("PositionDao.findAll", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+            DatabaseUtils.handleSqlException("PositionDao.findAll", e, log);
         }
         return positions;
     }
@@ -103,24 +92,11 @@ public class PositionDao implements CrudDao<Position, String> {
     @Override
     public void deleteById(String id) throws IllegalArgumentException {
         try(PreparedStatement stmt = c.prepareStatement("DELETE FROM position WHERE symbol = ?")){
-            c.setAutoCommit(false);
             stmt.setString(1, id);
             stmt.executeUpdate();
-            c.commit();
             log.info("Deleted position for " + id);
         } catch (SQLException e) {
-            try {
-                c.rollback();
-                DatabaseUtils.handleSqlException("PositionDao.deleteById", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
-            } catch (SQLException ex) {
-                DatabaseUtils.handleSqlException("PositionDao.deleteById.rollback", ex, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
-            }
-        }finally {
-            try {
-                c.setAutoCommit(true);
-            } catch (SQLException e) {
-                DatabaseUtils.handleSqlException("PositionDao.deleteById.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
-            }
+            DatabaseUtils.handleSqlException("PositionDao.deleteById", e, log);
         }
     }
 
@@ -130,33 +106,20 @@ public class PositionDao implements CrudDao<Position, String> {
             stmt.executeUpdate();
             log.info("Deleted all positions");
         } catch (SQLException e) {
-            DatabaseUtils.handleSqlException("PositionDao.deleteAll", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
+            DatabaseUtils.handleSqlException("PositionDao.deleteAll", e, log);
         }
     }
 
     public void update(Position position) {
         try(PreparedStatement stmt = c.prepareStatement("UPDATE position SET number_of_shares = ?, value_paid = ? WHERE symbol = ?")){
-            c.setAutoCommit(false);
             stmt.setInt(1, position.getNumOfShares());
             stmt.setDouble(2, position.getValuePaid());
             stmt.setString(3, position.getTicker());
             stmt.executeUpdate();
-            c.commit();
             log.info("Updated position for " + position.getTicker());
 
         } catch (SQLException e) {
-            try {
-                c.rollback();
-                DatabaseUtils.handleSqlException("PositionDao.update", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
-            } catch (SQLException ex) {
-                DatabaseUtils.handleSqlException("PositionDao.update.rollback", ex, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
-            }
-        } finally {
-            try {
-                c.setAutoCommit(true);
-            } catch (SQLException e) {
-                DatabaseUtils.handleSqlException("PositionDao.update.setAutoCommit", e, org.slf4j.LoggerFactory.getLogger(PositionDao.class));
-            }
+            DatabaseUtils.handleSqlException("PositionDao.update", e, log);
         }
     }
 

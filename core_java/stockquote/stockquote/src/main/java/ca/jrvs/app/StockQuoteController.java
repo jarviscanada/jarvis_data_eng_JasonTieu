@@ -52,13 +52,14 @@ public class StockQuoteController {
     }
 
     private void printMenu() {
+        log.info("Printing menu options.");
         System.out.println("\n=== Stock Quote Application ===");
         System.out.println("1. View Quote");
         System.out.println("2. Buy or Sell");
         System.out.println("3. View Position");
         System.out.println("4. Exit");
         System.out.print("Enter your choice: ");
-        log.info("Printing menu options.");
+        
 
     }
 

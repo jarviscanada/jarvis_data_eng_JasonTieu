@@ -12,9 +12,9 @@ public class QuoteService {
 
     public Optional<Quote> fetchQuoteDataFromAPI(String ticker) {
         try {
-            Quote quote = quoteHttpHelper.fetchQouteInfo(ticker);
+            Quote quote = quoteHttpHelper.fetchQuoteInfo(ticker);
             quoteDao.save(quote);
-            return Optional.ofNullable(quote);
+            return Optional.of(quote);
         } catch (Exception e) {
             // Log the exception and return an empty Optional
             org.slf4j.LoggerFactory.getLogger(QuoteService.class).warn(String.format("Exception in fetchQuoteDataFromAPI, message: %s", e.getMessage()));

@@ -1,0 +1,38 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: stockquote-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: stock_quote
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./DDL.sql:/docker-entrypoint-initdb.d/DDL.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: stockquote-app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: stock_quote
+      DB_USER: postgres
+      DB_PASSWORD: password
+    stdin_open: true
+    tty: true
+    restart: on-failure
+
+volumes:
+  postgres_data:

@@ -10,8 +10,6 @@ public class PropertyLoader {
     private static final Logger logger = LoggerFactory.getLogger(PropertyLoader.class);
 
     public PropertyLoader() {
-        // This looks for properties.txt in src/main/resources
-        // Don't include the .txt extension
         // ResourceBundle looks for properties.properties or properties.txt
         // in src/main/resources/
         try {

@@ -1,0 +1,339 @@
+2026-04-24 14:44:20 INFO  - ==================================================
+2026-04-24 14:44:20 INFO  -                NEW APPLICATION RUN                
+2026-04-24 14:44:20 INFO  - ==================================================
+2026-04-24 14:44:20 INFO  - Loaded properties file using ResourceBundle
+2026-04-24 14:44:20 INFO  -   - database: stock_quote
+2026-04-24 14:44:20 INFO  -   - server: localhost
+2026-04-24 14:44:20 INFO  -   - user: postgres
+2026-04-24 14:44:21 INFO  - Database URL: jdbc:postgresql://localhost:5432/stock_quote
+2026-04-24 14:44:21 INFO  - Database connection established
+2026-04-24 14:44:21 INFO  - DAO instances created successfully
+2026-04-24 14:44:21 INFO  - Service instances created successfully
+2026-04-24 14:44:21 INFO  - Controller instance created successfully
+2026-04-24 14:44:21 INFO  - Stock Quote Application started
+2026-04-24 14:44:21 INFO  - Printing menu options.
+2026-04-24 14:44:28 INFO  - Stock Quote Application exited
+2026-04-24 14:44:36 INFO  - Saved quote for APPL
+2026-04-24 14:44:36 INFO  - Saved position for APPL
+2026-04-24 14:44:36 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:44:36 INFO  - Deleted position for APPL
+2026-04-24 14:44:36 INFO  - Saved position for APPL
+2026-04-24 14:44:36 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:44:36 INFO  - Saved position for APPL
+2026-04-24 14:44:36 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:44:36 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:44:36 INFO  - Updated position for APPL
+2026-04-24 14:44:36 INFO  - Removed shares from position for APPL. New number of shares: 5, New value paid: 500.0
+2026-04-24 14:44:36 INFO  - Found position for APPL: 5 shares, value paid: $500.0
+2026-04-24 14:44:36 INFO  - Saved position for APPL
+2026-04-24 14:44:36 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:44:36 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:44:36 INFO  - Updated position for APPL
+2026-04-24 14:44:36 INFO  - Added shares to position for APPL. New number of shares: 15, New value paid: 1500.0
+2026-04-24 14:44:36 INFO  - Found position for APPL: 15 shares, value paid: $1500.0
+2026-04-24 14:44:36 INFO  - Saved position for APPL
+2026-04-24 14:44:36 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:44:36 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:44:36 ERROR - Cannot remove more shares or value than currently held for APPL
+2026-04-24 14:44:36 INFO  - Saved quote for AAPL
+2026-04-24 14:44:36 INFO  - Saved quote for AAPL
+2026-04-24 14:44:36 INFO  - Saved quote for TSLA
+2026-04-24 14:44:36 INFO  - Saved quote for TSLA
+2026-04-24 14:44:36 INFO  - Saved quote for AAPL
+2026-04-24 14:44:36 INFO  - Saved quote for APPL
+2026-04-24 14:44:36 INFO  - Saved quote for AAPL
+2026-04-24 14:44:36 INFO  - Saved position for AAPL
+2026-04-24 14:44:36 INFO  - Found position for AAPL: 10 shares, value paid: $1000.0
+2026-04-24 14:44:36 INFO  - Found position for AAPL: 10 shares, value paid: $1000.0
+2026-04-24 14:44:37 INFO  - Loaded properties file using ResourceBundle
+2026-04-24 14:44:37 INFO  -   - database: testdb
+2026-04-24 14:44:37 INFO  -   - server: localhost
+2026-04-24 14:44:37 INFO  -   - user: postgres
+2026-04-24 14:44:37 INFO  - Saved quote for AAPL
+2026-04-24 14:44:37 WARN  - Exception in fetchQuoteDataFromAPI, message: API error
+2026-04-24 14:44:37 INFO  - Loaded properties file using ResourceBundle
+2026-04-24 14:44:37 INFO  -   - database: testdb
+2026-04-24 14:44:37 INFO  -   - server: localhost
+2026-04-24 14:44:37 INFO  -   - user: postgres
+2026-04-24 14:44:37 INFO  - Loaded properties file using ResourceBundle
+2026-04-24 14:44:37 INFO  -   - database: testdb
+2026-04-24 14:44:37 INFO  -   - server: localhost
+2026-04-24 14:44:37 INFO  -   - user: postgres
+2026-04-24 14:44:37 INFO  - Loaded properties file using ResourceBundle
+2026-04-24 14:44:37 INFO  -   - database: testdb
+2026-04-24 14:44:37 INFO  -   - server: localhost
+2026-04-24 14:44:37 INFO  -   - user: postgres
+2026-04-24 14:44:37 INFO  - Loaded properties file using ResourceBundle
+2026-04-24 14:44:37 INFO  -   - database: testdb
+2026-04-24 14:44:37 INFO  -   - server: localhost
+2026-04-24 14:44:37 INFO  -   - user: postgres
+2026-04-24 14:44:37 INFO  - Loaded properties file using ResourceBundle
+2026-04-24 14:44:37 INFO  -   - database: testdb
+2026-04-24 14:44:37 INFO  -   - server: localhost
+2026-04-24 14:44:37 INFO  -   - user: postgres
+2026-04-24 14:44:37 INFO  - Loaded properties file using ResourceBundle
+2026-04-24 14:44:37 INFO  -   - database: testdb
+2026-04-24 14:44:37 INFO  -   - server: localhost
+2026-04-24 14:44:37 INFO  -   - user: postgres
+2026-04-24 14:44:37 INFO  - Fetched quote info for symbol AAPL: Quote [symbol=AAPL, open=150.0, high=155.0, low=149.0, price=154.0, volume=1000000, latestTradingDay=Mon Jan 01 00:00:00 EST 2024, previousClose=148.0, change=6.0, changePercent=4%, timestamp=2026-04-24 14:44:37.508]
+2026-04-24 14:44:37 ERROR - Error fetching quote info for symbol AAPL
+java.io.IOException: network error
+	at ca.jrvs.app.utils.QuoteHttpHelper.fetchQuoteInfo(QuoteHttpHelper.java:29)
+	at ca.jrvs.app.utils.QuoteHttpHelper_UnitTest.fetchQuoteInfo_shouldReturnNull_onIOException(QuoteHttpHelper_UnitTest.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:316)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:240)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:214)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:155)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+2026-04-24 14:44:37 ERROR - Unexpected code Response{protocol=http/1.1, code=500, message=error, url=http://test.com/}
+2026-04-24 14:45:32 INFO  - Fetched quote info for symbol AAPL: Quote [symbol=AAPL, open=150.0, high=155.0, low=149.0, price=154.0, volume=1000000, latestTradingDay=Mon Jan 01 00:00:00 EST 2024, previousClose=148.0, change=6.0, changePercent=4%, timestamp=2026-04-24 14:45:32.302]
+2026-04-24 14:45:32 ERROR - Error fetching quote info for symbol AAPL
+java.io.IOException: network error
+	at ca.jrvs.app.utils.QuoteHttpHelper.fetchQuoteInfo(QuoteHttpHelper.java:29)
+	at ca.jrvs.app.utils.QuoteHttpHelper_UnitTest.fetchQuoteInfo_shouldReturnNull_onIOException(QuoteHttpHelper_UnitTest.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:93)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:520)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:748)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:443)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:211)
+2026-04-24 14:45:32 ERROR - Unexpected code Response{protocol=http/1.1, code=500, message=error, url=http://test.com/}
+2026-04-24 14:46:19 INFO  - Saved quote for APPL
+2026-04-24 14:46:19 INFO  - Saved position for APPL
+2026-04-24 14:46:19 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:46:19 INFO  - Deleted position for APPL
+2026-04-24 14:46:19 INFO  - Saved position for APPL
+2026-04-24 14:46:19 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:46:19 INFO  - Saved position for APPL
+2026-04-24 14:46:19 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:46:19 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:46:19 INFO  - Updated position for APPL
+2026-04-24 14:46:19 INFO  - Removed shares from position for APPL. New number of shares: 5, New value paid: 500.0
+2026-04-24 14:46:19 INFO  - Found position for APPL: 5 shares, value paid: $500.0
+2026-04-24 14:46:19 INFO  - Saved position for APPL
+2026-04-24 14:46:19 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:46:19 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:46:19 INFO  - Updated position for APPL
+2026-04-24 14:46:19 INFO  - Added shares to position for APPL. New number of shares: 15, New value paid: 1500.0
+2026-04-24 14:46:19 INFO  - Found position for APPL: 15 shares, value paid: $1500.0
+2026-04-24 14:46:19 INFO  - Saved position for APPL
+2026-04-24 14:46:19 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:46:19 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:46:19 ERROR - Cannot remove more shares or value than currently held for APPL
+2026-04-24 14:46:20 INFO  - Saved quote for AAPL
+2026-04-24 14:46:20 INFO  - Saved quote for AAPL
+2026-04-24 14:46:20 INFO  - Saved quote for TSLA
+2026-04-24 14:46:20 INFO  - Saved quote for TSLA
+2026-04-24 14:46:20 INFO  - Saved quote for AAPL
+2026-04-24 14:46:20 INFO  - Saved quote for APPL
+2026-04-24 14:46:20 INFO  - Saved quote for AAPL
+2026-04-24 14:46:20 INFO  - Saved position for AAPL
+2026-04-24 14:46:20 INFO  - Found position for AAPL: 10 shares, value paid: $1000.0
+2026-04-24 14:46:20 INFO  - Found position for AAPL: 10 shares, value paid: $1000.0
+2026-04-24 14:46:20 INFO  - Loaded properties file using ResourceBundle
+2026-04-24 14:46:20 INFO  -   - database: testdb
+2026-04-24 14:46:20 INFO  -   - server: localhost
+2026-04-24 14:46:20 INFO  -   - user: postgres
+2026-04-24 14:46:20 INFO  - Saved quote for AAPL
+2026-04-24 14:46:20 WARN  - Exception in fetchQuoteDataFromAPI, message: API error
+2026-04-24 14:46:20 INFO  - Loaded properties file using ResourceBundle
+2026-04-24 14:46:20 INFO  -   - database: testdb
+2026-04-24 14:46:20 INFO  -   - server: localhost
+2026-04-24 14:46:20 INFO  -   - user: postgres
+2026-04-24 14:46:20 INFO  - Loaded properties file using ResourceBundle
+2026-04-24 14:46:20 INFO  -   - database: testdb
+2026-04-24 14:46:20 INFO  -   - server: localhost
+2026-04-24 14:46:20 INFO  -   - user: postgres
+2026-04-24 14:46:20 INFO  - Loaded properties file using ResourceBundle
+2026-04-24 14:46:20 INFO  -   - database: testdb
+2026-04-24 14:46:20 INFO  -   - server: localhost
+2026-04-24 14:46:20 INFO  -   - user: postgres
+2026-04-24 14:46:20 INFO  - Loaded properties file using ResourceBundle
+2026-04-24 14:46:20 INFO  -   - database: testdb
+2026-04-24 14:46:20 INFO  -   - server: localhost
+2026-04-24 14:46:20 INFO  -   - user: postgres
+2026-04-24 14:46:20 INFO  - Loaded properties file using ResourceBundle
+2026-04-24 14:46:20 INFO  -   - database: testdb
+2026-04-24 14:46:20 INFO  -   - server: localhost
+2026-04-24 14:46:20 INFO  -   - user: postgres
+2026-04-24 14:46:20 INFO  - Loaded properties file using ResourceBundle
+2026-04-24 14:46:20 INFO  -   - database: testdb
+2026-04-24 14:46:20 INFO  -   - server: localhost
+2026-04-24 14:46:20 INFO  -   - user: postgres
+2026-04-24 14:46:20 INFO  - Fetched quote info for symbol AAPL: Quote [symbol=AAPL, open=150.0, high=155.0, low=149.0, price=154.0, volume=1000000, latestTradingDay=Mon Jan 01 00:00:00 EST 2024, previousClose=148.0, change=6.0, changePercent=4%, timestamp=2026-04-24 14:46:20.843]
+2026-04-24 14:46:20 ERROR - Error fetching quote info for symbol AAPL
+java.io.IOException: network error
+	at ca.jrvs.app.utils.QuoteHttpHelper.fetchQuoteInfo(QuoteHttpHelper.java:29)
+	at ca.jrvs.app.utils.QuoteHttpHelper_UnitTest.fetchQuoteInfo_shouldReturnNull_onIOException(QuoteHttpHelper_UnitTest.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:316)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:240)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:214)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:155)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+2026-04-24 14:46:20 ERROR - Unexpected code Response{protocol=http/1.1, code=500, message=error, url=http://test.com/}
+2026-04-24 14:46:36 INFO  - Saved quote for APPL
+2026-04-24 14:46:36 INFO  - Saved position for APPL
+2026-04-24 14:46:36 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:46:36 INFO  - Deleted position for APPL
+2026-04-24 14:46:36 INFO  - Saved position for APPL
+2026-04-24 14:46:36 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:46:36 INFO  - Saved position for APPL
+2026-04-24 14:46:36 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:46:36 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:46:36 INFO  - Updated position for APPL
+2026-04-24 14:46:36 INFO  - Removed shares from position for APPL. New number of shares: 5, New value paid: 500.0
+2026-04-24 14:46:36 INFO  - Found position for APPL: 5 shares, value paid: $500.0
+2026-04-24 14:46:36 INFO  - Saved position for APPL
+2026-04-24 14:46:36 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:46:36 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:46:36 INFO  - Updated position for APPL
+2026-04-24 14:46:36 INFO  - Added shares to position for APPL. New number of shares: 15, New value paid: 1500.0
+2026-04-24 14:46:36 INFO  - Found position for APPL: 15 shares, value paid: $1500.0
+2026-04-24 14:46:36 INFO  - Saved position for APPL
+2026-04-24 14:46:36 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:46:36 INFO  - Found position for APPL: 10 shares, value paid: $1000.0
+2026-04-24 14:46:36 ERROR - Cannot remove more shares or value than currently held for APPL
+2026-04-24 14:46:36 INFO  - Saved quote for AAPL
+2026-04-24 14:46:36 INFO  - Saved quote for AAPL
+2026-04-24 14:46:36 INFO  - Saved quote for TSLA
+2026-04-24 14:46:36 INFO  - Saved quote for TSLA
+2026-04-24 14:46:36 INFO  - Saved quote for AAPL
+2026-04-24 14:46:36 INFO  - Saved quote for APPL
+2026-04-24 14:46:36 INFO  - Saved quote for AAPL
+2026-04-24 14:46:36 INFO  - Saved position for AAPL
+2026-04-24 14:46:36 INFO  - Found position for AAPL: 10 shares, value paid: $1000.0
+2026-04-24 14:46:36 INFO  - Found position for AAPL: 10 shares, value paid: $1000.0
+2026-04-24 14:46:37 INFO  - Loaded properties file using ResourceBundle
+2026-04-24 14:46:37 INFO  -   - database: testdb
+2026-04-24 14:46:37 INFO  -   - server: localhost
+2026-04-24 14:46:37 INFO  -   - user: postgres
+2026-04-24 14:46:37 INFO  - Saved quote for AAPL
+2026-04-24 14:46:37 WARN  - Exception in fetchQuoteDataFromAPI, message: API error
+2026-04-24 14:46:37 INFO  - Loaded properties file using ResourceBundle
+2026-04-24 14:46:37 INFO  -   - database: testdb
+2026-04-24 14:46:37 INFO  -   - server: localhost
+2026-04-24 14:46:37 INFO  -   - user: postgres
+2026-04-24 14:46:37 INFO  - Loaded properties file using ResourceBundle
+2026-04-24 14:46:37 INFO  -   - database: testdb
+2026-04-24 14:46:37 INFO  -   - server: localhost
+2026-04-24 14:46:37 INFO  -   - user: postgres
+2026-04-24 14:46:37 INFO  - Loaded properties file using ResourceBundle
+2026-04-24 14:46:37 INFO  -   - database: testdb
+2026-04-24 14:46:37 INFO  -   - server: localhost
+2026-04-24 14:46:37 INFO  -   - user: postgres
+2026-04-24 14:46:37 INFO  - Loaded properties file using ResourceBundle
+2026-04-24 14:46:37 INFO  -   - database: testdb
+2026-04-24 14:46:37 INFO  -   - server: localhost
+2026-04-24 14:46:37 INFO  -   - user: postgres
+2026-04-24 14:46:37 INFO  - Loaded properties file using ResourceBundle
+2026-04-24 14:46:37 INFO  -   - database: testdb
+2026-04-24 14:46:37 INFO  -   - server: localhost
+2026-04-24 14:46:37 INFO  -   - user: postgres
+2026-04-24 14:46:37 INFO  - Loaded properties file using ResourceBundle
+2026-04-24 14:46:37 INFO  -   - database: testdb
+2026-04-24 14:46:37 INFO  -   - server: localhost
+2026-04-24 14:46:37 INFO  -   - user: postgres
+2026-04-24 14:46:37 INFO  - Fetched quote info for symbol AAPL: Quote [symbol=AAPL, open=150.0, high=155.0, low=149.0, price=154.0, volume=1000000, latestTradingDay=Mon Jan 01 00:00:00 EST 2024, previousClose=148.0, change=6.0, changePercent=4%, timestamp=2026-04-24 14:46:37.554]
+2026-04-24 14:46:37 ERROR - Error fetching quote info for symbol AAPL
+java.io.IOException: network error
+	at ca.jrvs.app.utils.QuoteHttpHelper.fetchQuoteInfo(QuoteHttpHelper.java:29)
+	at ca.jrvs.app.utils.QuoteHttpHelper_UnitTest.fetchQuoteInfo_shouldReturnNull_onIOException(QuoteHttpHelper_UnitTest.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:316)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:240)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:214)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:155)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+2026-04-24 14:46:37 ERROR - Unexpected code Response{protocol=http/1.1, code=500, message=error, url=http://test.com/}

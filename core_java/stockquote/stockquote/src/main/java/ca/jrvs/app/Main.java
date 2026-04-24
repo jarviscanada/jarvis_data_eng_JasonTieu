@@ -7,6 +7,7 @@ import ca.jrvs.app.service.QuoteService;
 import ca.jrvs.app.utils.DatabaseUtils;
 import ca.jrvs.app.utils.PropertyLoader;
 import ca.jrvs.app.utils.QuoteHttpHelper;
+import okhttp3.OkHttpClient;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,8 +16,15 @@ public class Main {
     private static final Logger log = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
+
+        log.info("==================================================");
+        log.info("               NEW APPLICATION RUN                ");
+        log.info("==================================================");
+
+
         PropertyLoader loader = new PropertyLoader();
-        QuoteHttpHelper helper = new QuoteHttpHelper(loader);
+        
+        QuoteHttpHelper helper = new QuoteHttpHelper(new OkHttpClient(), loader);
         DatabaseUtils dbUtils = new DatabaseUtils(loader);
 
         try {
