@@ -19,34 +19,25 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_JasonTieu]
 
 **Core Java Apps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_JasonTieu/tree/master/core_java)]:
       
-  - Twitter App: Implemented a Java application that interacts with the Twitter API to post, retrieve, and delete tweets using HTTP requests and JSON parsing.
-  - JDBC App: Built a Java application using JDBC to connect to a relational database and perform CRUD operations.
-  - Grep App: Developed a Java-based grep application to search and process files using regular expressions and multithreading.
+  - Grep App: Developed a Java-based grep tool to search files recursively using regular expressions. Implemented file I/O and logging with SLF4J, packaged with Maven Shade. Addressed memory and scalability considerations through JVM tuning and streaming-based processing.
+  - Stock Quote App: Developed a Java-based stock quote application leveraging REST APIs to fetch real-time market data. Persisted quote data using a relational database and implemented robust error handling to ensure reliable data retrieval and system stability.
 
-**Springboot App** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_JasonTieu/tree/master/springboot)]: Built a RESTful Spring Boot application with layered architecture, integrating database persistence, validation, and service logic.
-
-**Python Data Analytics** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_JasonTieu/tree/master/python_data_anlytics)]: Performed data analysis using Python libraries to clean, transform, and visualize datasets, generating insights from structured data.
-
-**Hadoop** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_JasonTieu/tree/master/hadoop)]: Processed large datasets using Hadoop ecosystem tools, implementing distributed storage and parallel data processing.
-
-**Spark** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_JasonTieu/tree/master/spark)]: Built data processing pipelines using Apache Spark to perform distributed computations and analytics on large datasets.
-
-**Cloud/DevOps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_JasonTieu/tree/master/cloud_devops)]: Deployed containerized applications using Docker and cloud services, implementing version control and CI/CD practices.
+**Python Data Analysis** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_JasonTieu/tree/master/python_data_anlytics)]: Conducted retail data analytics using Python, Pandas, and PostgreSQL (Docker). Implemented RFM customer segmentation to identify high-value and inactive customers, providing insights for targeted marketing and retention strategies.
 
 
 ## Highlighted Projects
+**Game Deals Mobile Application** [[GitHub](https://github.com/PseudocodeJason/Deal_Shark_App_SourceCode)]: Created a cross-platform mobile app using React Native and Redux that allows users to search for discounted video games using external APIs.
+
 **Personal Blogging Web Application** [[GitHub](https://github.com/PseudocodeJason/Personal_Blogging_App_SourceCode)]: Built a full-stack blogging platform using Node.js, MongoDB, and React, allowing users to register, create posts, and manage content with password encryption using BCryptJS.
 
 **Chat Box Web Application** [[GitHub](https://github.com/PseudocodeJason/ChatBox_SourceCode)]: Developed a Django-based chat application using Python, Bootstrap, and socket libraries with SSL support for secure messaging.
-
-**Game Deals Mobile Application** [[GitHub](https://github.com/PseudocodeJason/Deal_Shark_App_SourceCode)]: Created a cross-platform mobile app using React Native and Redux that allows users to search for discounted video games using external APIs.
 
 **Clothing Warehouse Web Application** [[GitHub](https://github.com/PseudocodeJason/Clothing_Warehouse)]: Implemented a Spring MVC web application that enables administrators to manage clothing inventory through REST APIs using Spring Boot, JPA, Thymeleaf, and validation features.
 
 
 ## Professional Experiences
 
-**Data Engineer, Jarvis (2026 - present)**: Developing data engineering and software projects using Java, Linux, SQL, and cloud technologies. Building scalable applications, writing automation scripts, and working within Agile teams to design, implement, and deploy production-ready solutions.
+**Developer, Jarvis (2026 - Present)**: Developing data engineering and software solutions using Java, Linux, and SQL. Designing scalable systems, implementing automation and data pipelines, and applying best practices in testing, debugging, and Agile development.
 
 **Letter Carrier, Canada Post (Nov 2023 - Present)**: Sort and deliver mail and parcels while operating mobile scanning devices to track deliveries in real time. Maintain accuracy, follow safety protocols, and ensure secure handling of customer items while meeting daily delivery targets.
 
