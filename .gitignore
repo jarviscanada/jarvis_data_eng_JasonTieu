@@ -7,3 +7,9 @@ core_java/grep/.idea/compiler.xml
 /core_java/.vscode
 /core_java/grep/.idea
 /core_java/grep/target
+/core_java/stockquote/stockquote/target
+/core_java/stockquote/stockquote/.vscode
+/core_java/stockquote/stockquote/logs
+core_java/stockquote/stockquote/logs/app-flow.log
+core_java/stockquote/stockquote/logs/app-error.log
+/core_java/stockquote/target
