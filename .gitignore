@@ -13,3 +13,5 @@ core_java/grep/.idea/compiler.xml
 core_java/stockquote/stockquote/logs/app-flow.log
 core_java/stockquote/stockquote/logs/app-error.log
 /core_java/stockquote/target
+/mainframe/.vscode
+/mainframe/bin
