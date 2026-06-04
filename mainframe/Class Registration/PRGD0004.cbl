@@ -1,15 +1,20 @@
       *================================================================*
-      *  PRGD0004 - DELETE STUDENT RECORD FROM VSAM                   *
-      *  Reads student by ID, shows record, confirms before deleting  *
+      *  PRGD0004 - DELETE STUDENT RECORD FROM VSAM                    *
+      *  Locates a student by ID, displays the full record for review, *
+      *  then asks for Y/N confirmation before permanently deleting.   *
+      *                                                                *
+      *  BACK TO MENU: At the opening prompt, typing N returns to the  *
+      *  main menu immediately before any file is opened.              *
+      *  Author: Jason Tieu
+      *  STUDENT MANAGEMENT SYSTEM
       *================================================================*
        IDENTIFICATION DIVISION.
        PROGRAM-ID. PRGD0004.
-       AUTHOR.     STUDENT MANAGEMENT SYSTEM.
+
 
        ENVIRONMENT DIVISION.
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
-
            SELECT VSAM-FILE
                ASSIGN TO 'VSAMFILE'
                ORGANIZATION IS INDEXED
@@ -19,7 +24,6 @@
 
        DATA DIVISION.
        FILE SECTION.
-
        FD  VSAM-FILE.
        COPY 'STUDENT-RECORD'.
 
@@ -27,19 +31,61 @@
 
        01  WS-VSAM-STATUS         PIC XX    VALUE SPACES.
        01  WS-SEARCH-ID           PIC 9(4)  VALUE 0.
+       01  WS-ID-INPUT            PIC X(5)  VALUE SPACES.
        01  WS-CONFIRM             PIC X     VALUE SPACES.
+       01  WS-ANOTHER             PIC X     VALUE SPACES.
+       01  WS-CONTINUE            PIC X     VALUE 'Y'.
+       01  WS-INPUT-VALID         PIC X     VALUE 'N'.
+       01  WS-GO-BACK             PIC X     VALUE 'N'.
+       01  WS-BACK-INPUT          PIC X     VALUE SPACES.
        01  WS-LINE                PIC X(78) VALUE ALL '-'.
 
        PROCEDURE DIVISION.
 
       *----------------------------------------------------------------*
        0000-MAIN.
-           PERFORM 1000-INIT
-           PERFORM 2000-GET-ID
-           PERFORM 3000-READ-RECORD
-           PERFORM 4000-CONFIRM-DELETE
-           PERFORM 5000-TERMINATE
+           PERFORM 0500-CHECK-BACK
+           IF WS-GO-BACK = 'N'
+               PERFORM 1000-INIT
+               PERFORM UNTIL WS-CONTINUE = 'N'
+                   PERFORM 2000-GET-ID
+                   PERFORM 3000-READ-RECORD
+                   PERFORM 4000-CONFIRM-DELETE
+                   PERFORM 4500-ASK-ANOTHER
+               END-PERFORM
+               PERFORM 5000-TERMINATE
+           END-IF
            STOP RUN.
+
+      *----------------------------------------------------------------*
+       0500-CHECK-BACK.
+           MOVE 'N' TO WS-INPUT-VALID
+           DISPLAY SPACES
+           DISPLAY '+-------------------------------------------------+'
+           DISPLAY '|   D E L E T E   S T U D E N T   D E T A I L S   |'
+           DISPLAY '+-------------------------------------------------+'
+           DISPLAY SPACES
+           PERFORM UNTIL WS-INPUT-VALID = 'Y'
+               DISPLAY 'PROCEED TO DELETE A STUDENT RECORD?'
+               DISPLAY '  Y = YES, CONTINUE'
+               DISPLAY '  N = NO,  RETURN TO MAIN MENU'
+               DISPLAY 'ENTER CHOICE >> '
+               ACCEPT WS-BACK-INPUT
+               EVALUATE TRUE
+                   WHEN WS-BACK-INPUT = 'Y' OR WS-BACK-INPUT = 'y'
+                       MOVE 'N' TO WS-GO-BACK
+                       MOVE 'Y' TO WS-INPUT-VALID
+                       MOVE 'Y' TO WS-CONTINUE
+                   WHEN WS-BACK-INPUT = 'N' OR WS-BACK-INPUT = 'n'
+                       DISPLAY SPACES
+                       DISPLAY '*** RETURNING TO MAIN MENU ***'
+                       DISPLAY SPACES
+                       MOVE 'Y' TO WS-GO-BACK
+                       MOVE 'Y' TO WS-INPUT-VALID
+                   WHEN OTHER
+                       DISPLAY '*** PLEASE ENTER Y OR N ***'
+               END-EVALUATE
+           END-PERFORM.
 
       *----------------------------------------------------------------*
        1000-INIT.
@@ -48,16 +94,29 @@
                DISPLAY 'ERROR OPENING VSAM FILE: ' WS-VSAM-STATUS
                STOP RUN
            END-IF
-           DISPLAY SPACES
-           DISPLAY '+-------------------------------------------------+'
-           DISPLAY '|   D E L E T E   S T U D E N T   D E T A I L S   |'
-           DISPLAY '+-------------------------------------------------+'
            DISPLAY SPACES.
 
       *----------------------------------------------------------------*
        2000-GET-ID.
-           DISPLAY 'ENTER STUDENT ID (MAX 4 DIGITS) >>'
-           ACCEPT WS-SEARCH-ID.
+           MOVE 'N' TO WS-INPUT-VALID
+           PERFORM UNTIL WS-INPUT-VALID = 'Y'
+               DISPLAY 'ENTER STUDENT ID (MAX 4 DIGITS) >>'
+               ACCEPT WS-ID-INPUT
+               EVALUATE TRUE
+                   WHEN WS-ID-INPUT = SPACES
+                       DISPLAY '*** ERROR: ID CANNOT BE BLANK. ***'
+                   WHEN WS-ID-INPUT(5:1) NOT = SPACE
+                       DISPLAY '*** ERROR: ID MUST BE MAX 4 DIGITS.'
+                               ' PLEASE TRY AGAIN. ***'
+                   WHEN WS-ID-INPUT(1:4) NOT NUMERIC
+                       DISPLAY '*** ERROR: ID MUST BE NUMERIC.'
+                               ' PLEASE TRY AGAIN. ***'
+                   WHEN OTHER
+                       MOVE FUNCTION NUMVAL(WS-ID-INPUT)
+                           TO WS-SEARCH-ID
+                       MOVE 'Y' TO WS-INPUT-VALID
+               END-EVALUATE
+           END-PERFORM.
 
       *----------------------------------------------------------------*
        3000-READ-RECORD.
@@ -76,9 +135,10 @@
                        SR-UPDATE-DATE
                DISPLAY WS-LINE
            ELSE IF WS-VSAM-STATUS = '23'
-               DISPLAY 'STUDENT ID ' WS-SEARCH-ID ' NOT FOUND.'
-               CLOSE VSAM-FILE
-               STOP RUN
+               DISPLAY '*** STUDENT ID ' WS-SEARCH-ID
+                       ' NOT FOUND. PLEASE TRY AGAIN. ***'
+               PERFORM 2000-GET-ID
+               PERFORM 3000-READ-RECORD
            ELSE
                DISPLAY 'ERROR READING VSAM FILE: ' WS-VSAM-STATUS
                CLOSE VSAM-FILE
@@ -87,25 +147,56 @@
 
       *----------------------------------------------------------------*
        4000-CONFIRM-DELETE.
-           DISPLAY 'ARE YOU SURE YOU WISH TO DELETE THE ABOVE'
-                   ' STUDENT (Y/N)? >>'
-           ACCEPT WS-CONFIRM
-           IF WS-CONFIRM = 'Y' OR WS-CONFIRM = 'y'
-               DELETE VSAM-FILE
-               IF WS-VSAM-STATUS = '00'
-                   DISPLAY SPACES
-                   DISPLAY '<<----- DELETED THE ABOVE STUDENT ----->> '
-                   DISPLAY SPACES
-               ELSE
-                   DISPLAY 'ERROR DELETING RECORD - STATUS: '
-                           WS-VSAM-STATUS
-               END-IF
-           ELSE
-               DISPLAY SPACES
-               DISPLAY '*** DELETE CANCELLED ***'
-               DISPLAY SPACES
-           END-IF.
+           MOVE 'N' TO WS-INPUT-VALID
+           PERFORM UNTIL WS-INPUT-VALID = 'Y'
+               DISPLAY 'ARE YOU SURE YOU WISH TO DELETE THE ABOVE'
+                       ' STUDENT (Y/N)? >>'
+               ACCEPT WS-CONFIRM
+               EVALUATE TRUE
+                   WHEN WS-CONFIRM = 'Y' OR WS-CONFIRM = 'y'
+                       DELETE VSAM-FILE
+                       IF WS-VSAM-STATUS = '00'
+                           DISPLAY SPACES
+                           DISPLAY '<<--- DELETED THE ABOVE STUDENT -'
+                           '-->> '
+                           DISPLAY SPACES
+                       ELSE
+                           DISPLAY 'ERROR DELETING RECORD - STATUS: '
+                                   WS-VSAM-STATUS
+                       END-IF
+                       MOVE 'Y' TO WS-INPUT-VALID
+                   WHEN WS-CONFIRM = 'N' OR WS-CONFIRM = 'n'
+                       DISPLAY SPACES
+                       DISPLAY '*** DELETE CANCELLED ***'
+                       DISPLAY SPACES
+                       MOVE 'Y' TO WS-INPUT-VALID
+                   WHEN OTHER
+                       DISPLAY '*** PLEASE ENTER Y OR N ***'
+               END-EVALUATE
+           END-PERFORM.
+
+      *----------------------------------------------------------------*
+       4500-ASK-ANOTHER.
+           MOVE 'N' TO WS-INPUT-VALID
+           PERFORM UNTIL WS-INPUT-VALID = 'Y'
+               DISPLAY 'DO YOU WANT TO DELETE ANOTHER STUDENT?'
+               DISPLAY '  Y = YES'
+               DISPLAY '  N = NO, RETURN TO MAIN MENU'
+               DISPLAY 'ENTER CHOICE >> '
+               ACCEPT WS-ANOTHER
+               EVALUATE TRUE
+                   WHEN WS-ANOTHER = 'Y' OR WS-ANOTHER = 'y'
+                       MOVE 'Y' TO WS-CONTINUE
+                       MOVE 'Y' TO WS-INPUT-VALID
+                   WHEN WS-ANOTHER = 'N' OR WS-ANOTHER = 'n'
+                       MOVE 'N' TO WS-CONTINUE
+                       MOVE 'Y' TO WS-INPUT-VALID
+                   WHEN OTHER
+                       DISPLAY '*** PLEASE ENTER Y OR N ***'
+               END-EVALUATE
+           END-PERFORM.
 
       *----------------------------------------------------------------*
        5000-TERMINATE.
            CLOSE VSAM-FILE.
+           GOBACK.

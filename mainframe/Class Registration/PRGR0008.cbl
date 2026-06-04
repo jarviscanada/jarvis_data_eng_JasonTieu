@@ -1,14 +1,16 @@
       *================================================================*
-      *  PRGR0008 - REPORT FILE WITH COURSE BREAK                     *
-      *  Reads VSAM sequentially; prints subtotals at each new course *
-      *  Note: VSAM is keyed by ID, not course. For a proper course   *
-      *  break report the VSAM must be sorted by course first, or a   *
-      *  sort work file used. This version does a pass-through and    *
-      *  groups by detecting course changes in sequence.              *
+      *  PRGR0008 - REPORT FILE WITH COURSE BREAK                      *
+      *  Sorts VSAM data by course then generates a grouped report.    *
+      *                                                                *
+      *  ENHANCEMENT:                                                  *
+      *  - After the report is printed, asks the user if they want     *
+      *    to run it again or return to the main menu.                 *
+      *  Author: Jason Tieu
+      *  STUDENT MANAGEMENT SYSTEM
       *================================================================*
        IDENTIFICATION DIVISION.
        PROGRAM-ID. PRGR0008.
-       AUTHOR.     STUDENT MANAGEMENT SYSTEM.
+
 
        ENVIRONMENT DIVISION.
        INPUT-OUTPUT SECTION.
@@ -56,19 +58,26 @@
        01  WS-BREAK-COUNTER       PIC 9(4)  VALUE 0.
        01  WS-CURRENT-COURSE      PIC X(15) VALUE SPACES.
        01  WS-FIRST-RECORD        PIC X     VALUE 'Y'.
+       01  WS-ANOTHER             PIC X     VALUE SPACES.
+       01  WS-CONTINUE            PIC X     VALUE 'Y'.
+       01  WS-INPUT-VALID         PIC X     VALUE 'N'.
        01  WS-LINE                PIC X(75) VALUE ALL '-'.
 
        PROCEDURE DIVISION.
 
       *----------------------------------------------------------------*
        0000-MAIN.
-      *--- Sort VSAM output by course then ID ---
-           SORT SORT-WORK
-               ASCENDING KEY SORT-COURSE
-               ASCENDING KEY SORT-ID
-               INPUT PROCEDURE  1000-LOAD-SORT
-               OUTPUT PROCEDURE 2000-PRODUCE-REPORT
-           STOP RUN.
+      *  The SORT verb runs the full pipeline each time through the     *
+      *  loop. Each iteration re-reads VSAM, re-sorts, and re-prints.  *
+           PERFORM UNTIL WS-CONTINUE = 'N'
+               SORT SORT-WORK
+                   ASCENDING KEY SORT-COURSE
+                   ASCENDING KEY SORT-ID
+                   INPUT PROCEDURE  1000-LOAD-SORT
+                   OUTPUT PROCEDURE 2000-PRODUCE-REPORT
+               PERFORM 2500-ASK-ANOTHER
+           END-PERFORM
+           GOBACK.
 
       *----------------------------------------------------------------*
        1000-LOAD-SORT SECTION.
@@ -99,6 +108,8 @@
       *----------------------------------------------------------------*
        2000-PRODUCE-REPORT SECTION.
        2000-PRODUCE-REPORT-START.
+      *  Reset all counters and flags before producing the report      *
+      *  so repeated runs (from the continue loop) start clean.        *
            MOVE 'N'    TO WS-EOF
            MOVE 'Y'    TO WS-FIRST-RECORD
            MOVE SPACES TO WS-CURRENT-COURSE
@@ -116,7 +127,6 @@
                END-RETURN
            END-PERFORM
 
-      *--- Print final group ---
            IF WS-FIRST-RECORD = 'N'
                DISPLAY WS-LINE
            END-IF
@@ -129,7 +139,6 @@
 
       *----------------------------------------------------------------*
        2100-PROCESS-SORT-RECORD.
-      *--- Control break: new course detected ---
            IF SORT-COURSE NOT = WS-CURRENT-COURSE
                IF WS-FIRST-RECORD = 'N'
                    DISPLAY WS-LINE
@@ -144,7 +153,6 @@
                        ' INSERT DATE | UPDATE DATE'
                DISPLAY WS-LINE
            END-IF
-      *--- Print the student line ---
            ADD 1 TO WS-TOTAL-COUNTER
            ADD 1 TO WS-BREAK-COUNTER
            DISPLAY SORT-ID ' | '
@@ -152,3 +160,24 @@
                    SORT-BIRTHDAY ' | '
                    SORT-INSERT-DATE ' | '
                    SORT-UPDATE-DATE.
+
+      *----------------------------------------------------------------*
+       2500-ASK-ANOTHER.
+      *  After the report prints, ask if the user wants to run it      *
+      *  again or return to the menu. Validates Y or N only.           *
+           MOVE 'N' TO WS-INPUT-VALID
+           PERFORM UNTIL WS-INPUT-VALID = 'Y'
+               DISPLAY 'DO YOU WANT TO RUN THE REPORT AGAIN?'
+                       ' (Y/N) >>'
+               ACCEPT WS-ANOTHER
+               EVALUATE TRUE
+                   WHEN WS-ANOTHER = 'Y' OR WS-ANOTHER = 'y'
+                       MOVE 'Y' TO WS-CONTINUE
+                       MOVE 'Y' TO WS-INPUT-VALID
+                   WHEN WS-ANOTHER = 'N' OR WS-ANOTHER = 'n'
+                       MOVE 'N' TO WS-CONTINUE
+                       MOVE 'Y' TO WS-INPUT-VALID
+                   WHEN OTHER
+                       DISPLAY '*** PLEASE ENTER Y OR N ***'
+               END-EVALUATE
+           END-PERFORM.
