@@ -44,9 +44,9 @@
   ],
   "jarvis_projects": [
     {
-      "description": "Developed a Linux-based cluster monitoring tool using Bash scripting and SQL to collect, store, and analyze system resource data, enabling performance tracking and automated reporting.",
-      "git_url": "/linux_sql",
-      "name": "Cluster Monitor"
+      "description": "Developing software, data engineering, and mainframe applications using COBOL, Java, Linux, SQL, and DB2. Designing solutions involving VSAM file processing, batch workflows, automation, and database integration while applying Agile development, testing, and debugging best practices.",
+      "git_url": "/mainframe",
+      "name": "Mainframe Apps"
     },
     {
       "description": [
@@ -58,8 +58,13 @@
     },
     {
       "description": "Conducted retail data analytics using Python, Pandas, and PostgreSQL (Docker). Implemented RFM customer segmentation to identify high-value and inactive customers, providing insights for targeted marketing and retention strategies.",
-      "git_url": "/python_data_anlytics",
+      "git_url": "/python_data_analytics",
       "name": "Python Data Analysis"
+    },
+    {
+      "description": "Developed a Linux-based cluster monitoring tool using Bash scripting and SQL to collect, store, and analyze system resource data, enabling performance tracking and automated reporting.",
+      "git_url": "/linux_sql",
+      "name": "Cluster Monitor"
     }
   ],
   "name": "Jason Tieu",
@@ -75,7 +80,7 @@
   "professional_experience": [
     {
       "company": "Jarvis",
-      "description": "Developing data engineering and software solutions using Java, Linux, and SQL. Designing scalable systems, implementing automation and data pipelines, and applying best practices in testing, debugging, and Agile development.",
+      "description": "Developing software, data engineering, and mainframe applications using COBOL, Java, Linux, and SQL. Designing and implementing solutions involving VSAM file processing, batch-oriented workflows, automation, and database integration while applying Agile development, testing, and debugging best practices.",
       "duration": "2026 - Present",
       "title": "Developer"
     },
@@ -100,16 +105,18 @@
   ],
   "skills": {
     "competent": [
-      "JavaScript",
+      "ISPF",
       "Docker",
-      "Python",
-      "Spring Boot",
-      "MongoDB"
+      "COBOL",
+      "JCL",
+      "DB2",
+      "Mainframe Development",
+      "Python"
     ],
     "familiar": [
       "React",
-      "Django",
-      "Redux",
+      "Spring Boot",
+      "VSAM",
       "REST APIs",
       "UML"
     ],
@@ -121,5 +128,5 @@
       "Git"
     ]
   },
-  "summary": "Computer Programming graduate from Humber College with a strong foundation in full-stack development, databases, and software engineering principles. Experienced in building web, mobile, and database-driven applications using Java, Python, JavaScript, React, Node.js, and SQL. Passionate about problem solving, automation, and scalable system design. Comfortable working in Agile environments and collaborating with cross-functional teams. Continuously learning new technologies and seeking opportunities to contribute to impactful software and data engineering projects."
+  "summary": "Computer Programming graduate from Humber College with a strong foundation in software development, databases, and mainframe technologies. Experienced in building web, mobile, database-driven, and COBOL applications using Java, Python, JavaScript, SQL, COBOL, VSAM, and DB2. Passionate about problem solving, automation, and scalable system design. Comfortable working in Agile environments and collaborating with cross-functional teams. Continuously learning new technologies and seeking opportunities to contribute to software, data engineering, and mainframe projects."
 }
