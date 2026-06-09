@@ -5,7 +5,7 @@ name: "Jason Tieu"
 github_repo_root_url: https://github.com/jarviscanada/jarvis_data_eng_JasonTieu
 
 # Introduce yourself
-summary: Computer Programming graduate from Humber College with a strong foundation in full-stack development, databases, and software engineering principles. Experienced in building web, mobile, and database-driven applications using Java, Python, JavaScript, React, Node.js, and SQL. Passionate about problem solving, automation, and scalable system design. Comfortable working in Agile environments and collaborating with cross-functional teams. Continuously learning new technologies and seeking opportunities to contribute to impactful software and data engineering projects.
+summary: "Computer Programming graduate from Humber College with a strong foundation in software development, databases, and mainframe technologies. Experienced in building web, mobile, database-driven, and COBOL applications using Java, Python, JavaScript, SQL, COBOL, VSAM, and DB2. Passionate about problem solving, automation, and scalable system design. Comfortable working in Agile environments and collaborating with cross-functional teams. Continuously learning new technologies and seeking opportunities to contribute to software, data engineering, and mainframe projects."
 
 # Group your skills by level.
 skills:
@@ -16,31 +16,37 @@ skills:
     - Agile/Scrum
     - Git
   competent:
-    - JavaScript
+    - ISPF
     - Docker
+    - COBOL
+    - JCL
+    - DB2
+    - Mainframe Development
     - Python
-    - Spring Boot
-    - MongoDB
   familiar:
     - React
-    - Django
-    - Redux
+    - Spring Boot
+    - VSAM
     - REST APIs
     - UML
 
 # List of Jarvis projects
 jarvis_projects:
-  - name: "Cluster Monitor"
-    git_url: "/linux_sql"
-    description: Developed a Linux-based cluster monitoring tool using Bash scripting and SQL to collect, store, and analyze system resource data, enabling performance tracking and automated reporting.
+  - name: "Mainframe Apps"
+    git_url: "/mainframe"
+    description: "Developing software, data engineering, and mainframe applications using COBOL, Java, Linux, SQL, and DB2. Designing solutions involving VSAM file processing, batch workflows, automation, and database integration while applying Agile development, testing, and debugging best practices."
   - name: "Core Java Apps"
     git_url: "/core_java"
     description: 
     - "Grep App: Developed a Java-based grep tool to search files recursively using regular expressions. Implemented file I/O and logging with SLF4J, packaged with Maven Shade. Addressed memory and scalability considerations through JVM tuning and streaming-based processing."
     - "Stock Quote App: Developed a Java-based stock quote application leveraging REST APIs to fetch real-time market data. Persisted quote data using a relational database and implemented robust error handling to ensure reliable data retrieval and system stability."
   - name: "Python Data Analysis"
-    git_url: "/python_data_anlytics"
-    description: Conducted retail data analytics using Python, Pandas, and PostgreSQL (Docker). Implemented RFM customer segmentation to identify high-value and inactive customers, providing insights for targeted marketing and retention strategies.
+    git_url: "/python_data_analytics"
+    description: "Conducted retail data analytics using Python, Pandas, and PostgreSQL (Docker). Implemented RFM customer segmentation to identify high-value and inactive customers, providing insights for targeted marketing and retention strategies."
+  - name: "Cluster Monitor"
+    git_url: "/linux_sql"
+    description: "Developed a Linux-based cluster monitoring tool using Bash scripting and SQL to collect, store, and analyze system resource data, enabling performance tracking and automated reporting."
+  
 
 # List of personal or academic projects
 highlighted_projects:
@@ -62,7 +68,7 @@ professional_experience:
   - title: "Developer"
     company: "Jarvis"
     duration: "2026 - Present"
-    description: Developing data engineering and software solutions using Java, Linux, and SQL. Designing scalable systems, implementing automation and data pipelines, and applying best practices in testing, debugging, and Agile development.
+    description: Developing software, data engineering, and mainframe applications using COBOL, Java, Linux, and SQL. Designing and implementing solutions involving VSAM file processing, batch-oriented workflows, automation, and database integration while applying Agile development, testing, and debugging best practices.
   - title: "Letter Carrier"
     company: "Canada Post"
     duration: "Nov 2023 - Present"
