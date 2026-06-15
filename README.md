@@ -15,7 +15,7 @@ Computer Programming graduate from Humber College with a strong foundation in so
 Project source code: [https://github.com/jarviscanada/jarvis_data_eng_JasonTieu](https://github.com/jarviscanada/jarvis_data_eng_JasonTieu)
 
 
-**Mainframe Apps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_JasonTieu/tree/master/mainframe)]: Developing software, data engineering, and mainframe applications using COBOL, Java, Linux, SQL, and DB2. Designing solutions involving VSAM file processing, batch workflows, automation, and database integration while applying Agile development, testing, and debugging best practices.
+**Mainframe Apps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_JasonTieu/tree/master/mainframe)]: Classroom Registration System: Developed a VSAM KSDS-based student records system in COBOL, featuring a menu-driven interface that dispatches to 8 modular sub-programs supporting full CRUD operations, multi-criteria queries, and sorted course-break reporting. Compatible with both GnuCOBOL and IBM z/OS mainframe environments.
 
 **Core Java Apps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_JasonTieu/tree/master/core_java)]:
       
