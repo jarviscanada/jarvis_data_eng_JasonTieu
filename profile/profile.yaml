@@ -34,10 +34,10 @@ skills:
 jarvis_projects:
   - name: "Mainframe Apps"
     git_url: "/mainframe"
-    description: "Developing software, data engineering, and mainframe applications using COBOL, Java, Linux, SQL, and DB2. Designing solutions involving VSAM file processing, batch workflows, automation, and database integration while applying Agile development, testing, and debugging best practices."
+    description: "Classroom Registration System: Developed a VSAM KSDS-based student records system in COBOL, featuring a menu-driven interface that dispatches to 8 modular sub-programs supporting full CRUD operations, multi-criteria queries, and sorted course-break reporting. Compatible with both GnuCOBOL and IBM z/OS mainframe environments."
   - name: "Core Java Apps"
     git_url: "/core_java"
-    description: 
+    description:
     - "Grep App: Developed a Java-based grep tool to search files recursively using regular expressions. Implemented file I/O and logging with SLF4J, packaged with Maven Shade. Addressed memory and scalability considerations through JVM tuning and streaming-based processing."
     - "Stock Quote App: Developed a Java-based stock quote application leveraging REST APIs to fetch real-time market data. Persisted quote data using a relational database and implemented robust error handling to ensure reliable data retrieval and system stability."
   - name: "Python Data Analysis"

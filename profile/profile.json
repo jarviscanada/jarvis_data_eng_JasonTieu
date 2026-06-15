@@ -44,7 +44,7 @@
   ],
   "jarvis_projects": [
     {
-      "description": "Developing software, data engineering, and mainframe applications using COBOL, Java, Linux, SQL, and DB2. Designing solutions involving VSAM file processing, batch workflows, automation, and database integration while applying Agile development, testing, and debugging best practices.",
+      "description": "Classroom Registration System: Developed a VSAM KSDS-based student records system in COBOL, featuring a menu-driven interface that dispatches to 8 modular sub-programs supporting full CRUD operations, multi-criteria queries, and sorted course-break reporting. Compatible with both GnuCOBOL and IBM z/OS mainframe environments.",
       "git_url": "/mainframe",
       "name": "Mainframe Apps"
     },
