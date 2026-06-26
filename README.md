@@ -1,6 +1,6 @@
 # Jason Tieu . Jarvis Consulting
 
-Computer Programming graduate from Humber College with a strong foundation in software development, databases, and mainframe technologies. Experienced in building web, mobile, database-driven, and COBOL applications using Java, Python, JavaScript, SQL, COBOL, VSAM, and DB2. Passionate about problem solving, automation, and scalable system design. Comfortable working in Agile environments and collaborating with cross-functional teams. Continuously learning new technologies and seeking opportunities to contribute to software, data engineering, and mainframe projects.
+Computer Programming graduate with a strong interest in mainframe development and a solid foundation in software development, databases, and enterprise technologies. Experienced building web, mobile, database-driven, and COBOL applications using Java, Python, JavaScript, SQL, COBOL, VSAM, and DB2. Passionate about problem solving, automation, and scalable system design, with a growing interest in modernizing enterprise systems. Comfortable working in Agile environments and continuously expanding my expertise in mainframe technologies while contributing to enterprise software and data engineering projects.
 
 ## Skills
 
